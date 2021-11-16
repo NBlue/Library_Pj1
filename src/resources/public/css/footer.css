@@ -1,0 +1,94 @@
+.footer {
+    background-image: linear-gradient(0, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url(../img/footer-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top: 40px solid #52a8f3;
+    display: none;
+}
+.footer.active {
+    display: block;
+}
+.footer__down-list-col {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.footer__down-list-col-title {
+    margin-top: 40px;
+    padding: 8px 20px;
+    color: var(--white-color);
+    position: relative;
+}
+.footer__down-list-col-title::after {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    content: "";
+    width: 20px;
+    height: 2px;
+    background-color: var(--white-color);
+}
+.footer__down-list-col-text {
+    margin: 0;
+    color: var(--white-color);
+    padding: 20px;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+.footer__down-list-col-link {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer__down-list-col-item > a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 3rem;
+    margin-left: 20px;
+    display: block;
+    transition: all 0.3s linear;
+}
+.footer__down-list-col-item:hover > a {
+    transform: scale(1.2);
+}
+.footer__down-list-col img {
+    width: 80%;
+    border-radius: 3px;
+    margin: 20px 0 20px 20px;
+}
+
+.footer__down-list-col-list {
+    margin: 20px;
+}
+.footer__down-list-col-item {
+    display: flex;
+}
+.footer__down-list-col-item-icon {
+    color: var(--white-color);
+    font-size: 1.8rem;
+    margin: 2px 12px 0 0;
+}
+.footer__down-list-col-item-wrap {
+    margin-bottom: 4px;
+}
+.footer__down-list-col-item-wrap h2 {
+    color: var(--white-color);
+    font-size: 1.8rem;
+    margin: 0px 0 6px 0;
+    line-height: 2.4rem;
+}
+.footer__down-list-col-item-wrap p {
+    color: var(--white-color);
+    margin: 0 0 8px 0;
+    font-size: 1.3rem;
+}
+.footer__down-list-col-item-wrap a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.3rem;
+}

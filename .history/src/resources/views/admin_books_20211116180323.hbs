@@ -1,0 +1,369 @@
+<div class="container-admin">
+    <div class="admin-books active">
+        <div class="admin-control">
+            <div class="btn book__add-btn width-100">
+                Thêm sách
+                <i
+                    class="plus-icon fas fa-plus"
+                ></i>
+            </div>
+            <div class="btn chart-btn width-100">
+                Thống kê
+                <i
+                    class="
+                        chart-icon
+                        fas
+                        fa-chart-pie
+                    "
+                ></i>
+            </div>
+            <div class="btn sort-btn width-100">
+                <p class="sort-title">Sắp xếp</p>
+                <i
+                    class="
+                        left-icon
+                        fas
+                        fa-chevron-left
+                    "
+                ></i>
+                <ul class="sort-list">
+                    <li class="sort-item">ID</li>
+                    <li class="sort-item">Nhiều sách</li>
+                    <li class="sort-item">Ít sách</li>
+                    <li class="sort-item">Mượn nhiều</li>
+                    <li class="sort-item">Mượn ít</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l-2">
+            </div>
+            <div class="col l-10">
+                <div class="book__label">
+                    <p class="id">ID</p>
+                    <p class="name">Tên sách</p>
+                    <p class="author">Tác giả</p>
+                    <p class="img">Ảnh</p>
+                    <p class="type">Thể loại</p>
+                    <p class="quantity">Số lượng</p>
+                    <p class="like">Lượt truy cập</p>
+                    <p class="action">Tùy chọn</p>
+                </div>
+                <div class="book__list">
+
+                    {{#each data}}
+                    <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">{{this.IdBook}}</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">{{this.Name}}</p>
+                        </section>
+                        <section class="book__item-author">
+                            <p class="author_text">Nguyễn Huy Hoàng</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section class="img" style="background-image: url({{this.ImgBook}});"></section>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">{{this.TypeBook}}</p>
+                        </section>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">{{this.Quantity}}</p>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">{{this.LikeBook}}</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_update-icon
+                                        fas
+                                        fa-pen-square
+                                    "
+                                ></i>
+                            </section>
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_delete-icon
+                                        fas
+                                        fa-trash-alt
+                                    "
+                                ></i>
+                            </section>
+                        </section>
+                    </div>                    
+                    {{/each}}
+
+                    {{!-- <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">S1</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">Code dạo kí sự</p>
+                        </section>
+                        <section class="book__item-author">
+                            <p class="author_text">Nguyễn Huy Hoàng</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section
+                                class="img"
+                                style="
+                                    background-image: url(/img/codedaokisu.webp);
+                                "
+                            ></section>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">Sách</p>
+                        </section>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">100</p>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">1000</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_update-icon
+                                        fas
+                                        fa-pen-square
+                                    "
+                                ></i>
+                            </section>
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_delete-icon
+                                        fas
+                                        fa-trash-alt
+                                    "
+                                ></i>
+                            </section>
+                        </section>
+                    </div>
+                    <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">S1</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">Code dạo kí sự</p>
+                        </section>
+                        <section class="book__item-author">
+                            <p class="author_text">Nguyễn Huy Hoàng</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section
+                                class="img"
+                                style="
+                                    background-image: url(/img/codedaokisu.webp);
+                                "
+                            ></section>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">Sách</p>
+                        </section>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">100</p>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">1000</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_update-icon
+                                        fas
+                                        fa-pen-square
+                                    "
+                                ></i>
+                            </section>
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_delete-icon
+                                        fas
+                                        fa-trash-alt
+                                    "
+                                ></i>
+                            </section>
+                        </section>
+                    </div>
+                    <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">S1</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">Code dạo kí sự</p>
+                        </section>
+                        <section class="book__item-author">
+                            <p class="author_text">Nguyễn Huy Hoàng</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section
+                                class="img"
+                                style="
+                                    background-image: url(/img/codedaokisu.webp);
+                                "
+                            ></section>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">Sách</p>
+                        </section>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">100</p>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">1000</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_update-icon
+                                        fas
+                                        fa-pen-square
+                                    "
+                                ></i>
+                            </section>
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_delete-icon
+                                        fas
+                                        fa-trash-alt
+                                    "
+                                ></i>
+                            </section>
+                        </section>
+                    </div>
+                    <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">S1</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">Code dạo kí sự</p>
+                        </section>
+                        <section class="book__item-author">
+                            <p class="author_text">Nguyễn Huy Hoàng</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section
+                                class="img"
+                                style="
+                                    background-image: url(/img/codedaokisu.webp);
+                                "
+                            ></section>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">Sách</p>
+                        </section>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">100</p>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">1000</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_update-icon
+                                        fas
+                                        fa-pen-square
+                                    "
+                                ></i>
+                            </section>
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_delete-icon
+                                        fas
+                                        fa-trash-alt
+                                    "
+                                ></i>
+                            </section>
+                        </section>
+                    </div>
+                    <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">S1</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">Code dạo kí sự</p>
+                        </section>
+                        <section class="book__item-author">
+                            <p class="author_text">Nguyễn Huy Hoàng</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section
+                                class="img"
+                                style="
+                                    background-image: url(/img/codedaokisu.webp);
+                                "
+                            ></section>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">Sách</p>
+                        </section>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">100</p>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">1000</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_update-icon
+                                        fas
+                                        fa-pen-square
+                                    "
+                                ></i>
+                            </section>
+                            <section class="action_btn">
+                                <i
+                                    class="
+                                        action_delete-icon
+                                        fas
+                                        fa-trash-alt
+                                    "
+                                ></i>
+                            </section>
+                        </section>
+                    </div> --}}
+                </div>
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        <li class="pagination-item">
+                            <a href="" class="pagination-prev"><i class="fas fa-angle-double-left"></i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">1</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">2</i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">3</i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-next"><i class="fas fa-angle-double-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

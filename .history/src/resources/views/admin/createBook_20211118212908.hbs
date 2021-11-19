@@ -1,0 +1,67 @@
+<div class="add__books">
+    <h1 class="create__books-title">Thêm sách</h1>
+    <form action="./create" method="POST" class="create__books-contain">
+        <div class="form-group">
+            <label for="book__name" class="form-label">Tên sách</label>
+            <input
+                type="text"
+                class="form-control"
+                id="book__name"
+                name="book__name"
+                placeholder="Nhập vào tên sách"
+            />
+            <span class="form-message"></span>
+        </div>
+        <div class="group">
+            <div class="form-group">
+                <label for="typeBook" class="form-label">Loại sách</label>
+                <select class="form-control" id="typeBook" name="typeBook">
+                    <option value="volvo">Chính trị - Pháp luật</option>
+                    <option value="saab">Khoa học công nghệ - Kinh tế</option>
+                    <option value="mercedes">Văn học nghệ thuật</option>
+                    <option value="audi">Văn hóa xã hội - Lịch sử</option>
+                    <option value="audi">Giáo trình</option>
+                    <option value="audi">Truyện, tiểu thuyết</option>
+                    <option value="audi">Tâm lý, tâm linh, tôn giáo</option>
+                    <option value="audi">Sách thiếu nhi</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+            <div class="group__mini">
+                <div class="form-group">
+                    <label for="numberBook" class="form-label">Số lượng</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="numberBook"
+                        name="numberBook"
+                        placeholder="Nhập số lượng thêm:"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="imgBook" class="form-label">Ảnh sách</label>
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="imgBook"
+                        name="imgBook"
+                        placeholder="Chọn ảnh sách"
+                    />
+                    <span class="form-message"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="form-label">Mô tả</label>
+            <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                row="3"
+            ></textarea>
+            <span class="form-message"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Lưu</button>
+    </form>
+</div>

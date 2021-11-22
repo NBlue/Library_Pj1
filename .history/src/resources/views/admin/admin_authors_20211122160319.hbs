@@ -1,0 +1,128 @@
+<div class="container-admin">
+    <div class="admin-authors">
+        <div class="admin-control">
+            <a href="/admin/authors/add" class="btn book__add-btn width-100">
+                Thêm tác giả
+                <i class="plus-icon fas fa-plus"></i>
+            </a>
+            <a href="" class="btn chart-btn width-100">Thống kê
+                <i class="chart-icon fas fa-chart-pie"></i>
+            </a>
+            <div class="btn sort-btn width-100">
+                <p class="sort-title">Sắp xếp</p>
+                <i class=" left-icon  fas fa-chevron-left"></i>
+                <ul class="sort-list">
+                    <li class="sort-item"><a href="#">D</a></li>
+                    <li class="sort-item"><a href="#">Viết nhiều sách</a></li>
+                    <li class="sort-item"><a href="#">Viết ít sách</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l-2">
+            </div>
+            <div class="col l-10">
+                <div class="author__label">
+                    <p class="id">STT</p>
+                    <p class="name">Tên tác giả</p>
+                    <p class="img">Ảnh tác giả</p>
+                    <p class="action">Tùy chọn</p>
+                </div>
+                <div class="author__list">
+                  
+                    {{#each data}}
+                    <div class="author__item">
+                        <section class="author__item-id">
+                            <p class="id_text">{{sum @index 1}}</p>
+                        </section>
+                        <section class="author__item-name">
+                            <p class="name_text">{{this.Name}}</p>
+                        </section>
+                        <section class="author__item-img">
+                            <div class="img" style="background-image: url(/img/authors/{{this.ImgAuthor}});"></div>
+                        </section>
+                        <section class="author__item-action">
+                            <a href="/admin/authors/update/{{this.IdAuthor}}"class="action_btn">
+                                <i class="action_update-icon fas fa-pen-square"></i>
+                            </a>
+                            <a class="action_btn" onclick="onDelete()">
+                                <i data-id="{{this.IdAuthor}}" onclick="getId(this)" class=" action_delete-icon fas fa-trash-alt"></i>
+                            </a>
+                        </section>
+                    </div>  
+                    {{/each}}    
+                       
+                </div>
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        <li class="pagination-item">
+                            <a href="" class="pagination-prev"><i class="fas fa-angle-double-left"></i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">1</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">2</i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">3</i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-next"><i class="fas fa-angle-double-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{!-- Confirm Delete --}}
+<div class="confirm">
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h5>Xóa tác giả</h5>
+                    <button type="button" class="btn-close" onclick="onCancel()">
+                        <img src="/img/other/remove_icon.png" alt="">                        
+                    </button>
+                </header>
+                <section class="modal-body">
+                    <p>Bạn chắc chắn muốn xóa tác giả này?</p>
+                </section>
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-primary modal-btn modal-confirm-btn">Xóa bỏ</button>
+                    <button type="button" class="btn btn-secondary  modal-btn" onclick="onCancel()">Hủy</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let confirm = document.querySelector('.modal');;
+    function onDelete() {
+        if(!confirm.classList.contains("active")){
+            confirm.classList.add("active");
+        }
+    }
+    function onCancel(){
+        if(confirm.classList.contains("active")){
+            confirm.classList.remove("active");
+        }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector('.modal-dialog').addEventListener("click", (e) => e.stopPropagation());
+        document.querySelector('.modal').addEventListener("click", onCancel);
+    })
+    /*let deleteBtns = document.querySelectorAll(".action_delete-icon");
+    deleteBtns.forEach((deleteBtn) => {
+        console.log(deleteBtn.getAttribute("data-id"));
+    }) */
+    function getId(value){
+        var id = value.getAttribute("data-id");
+        console.log(id);
+    }
+</script>

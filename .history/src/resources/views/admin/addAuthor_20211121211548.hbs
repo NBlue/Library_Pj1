@@ -1,0 +1,47 @@
+<div class="add__authors">
+    <h1 class="create__author-title">Thêm tác giả</h1>
+    <form action="./add" method="POST" class="create__author-contain" encType="multipart/form-data">
+        <div class="form-group">
+            <label for="author__name" class="form-label">Tên tác giả</label>
+            <input
+                type="text"
+                class="form-control"
+                id="author__name"
+                name="author__name"
+                placeholder="Nhập vào tên tác giả"
+            />
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="imgAuthor" class="form-label">Chọn ảnh</label>
+            <label class="form-control imgAuthor" for="imgAuthor">
+                <i class="fas fa-images"></i>
+                Thêm ảnh tác giả
+            </label>
+            <input
+                type="file"
+                class=""
+                name="imgAuthor"
+                id="imgAuthor"
+                accept="image/*"
+            />
+            <span class="form-message"></span>
+        </div>
+
+        <button class="btn btn-form btn-submit" type="submit">Lưu</button>
+        <button class="btn btn-form btn-cancel">Trở lại</button>
+    </form>
+</div>
+<script>
+    const customText = document.querySelector(".imgAuthor"); 
+    const realFileBtn = document.querySelector("#imgAuthor");
+    realFileBtn.addEventListener("change", function(){
+        if(realFileBtn.value){ 
+            customText.innerHTML = realFileBtn.value.match(/[\\\\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            customText.style.color = "#333"; 
+        } else { 
+            customText.innerHTML = "Thêm ảnh cho tác giả" 
+            customText.style.color = "#ccc"; 
+        } 
+    })
+</script>

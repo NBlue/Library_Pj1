@@ -1,0 +1,137 @@
+<div class="modal">
+    <div class="login_register">
+        <p class="modal-title">welcome to NBLUE Library</p>
+        <div class="modal-wrap">
+            <img class="acc-logo" src="/img/logo.png" alt="" />
+            <!-- REGISTER -->
+            <div class="register">
+                <h1 class="acc-title">Đăng kí</h1>
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Tên đầy đủ</label>
+                    <input
+                        id="fullname"
+                        name="fullname"
+                        type="text"
+                        placeholder="VD: Nguyễn Phương Nam"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Nhập email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="VD: abc@gmail.com"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="form-label">Địa chỉ</label>
+                    <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        placeholder="Nhập địa chỉ"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="form-label">Tên tài khoản</label>
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        placeholder="VD: User123"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Nhập mật khẩu"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Xác
+                        nhận mật khẩu</label>
+                    <input
+                        id="password_confirmation"
+                        name="password_confirmation"
+                        type="password"
+                        placeholder="Nhập lại mật khẩu"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+                <button class="form-submit">Đăng ký</button>
+                <section class="form-check">
+                    <p class="form-check-text">Bạn đã có tài khoản?</p>
+                    <a class="form-check-btn login-btn">Đăng nhập</a>
+                </section>
+            </div>
+            <!-- LOGIN -->
+            <div class="login active">
+                <form action="./" method="POST">
+                    {{# if alert }}
+                    {{# each alert }}
+                    <h1 class="acc-title">Đăng nhập</h1>
+                    <div class="form-group">
+                        <label for="username" class="form-label">Tên tài khoản</label>
+                        <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            placeholder="VD: User123"
+                            class="form-control"
+                        />
+                            <span class="form-message">{{this.msg}}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Nhập mật khẩu"
+                            class="form-control"
+                        />
+                        <span class="form-message">{{this.msg}}</span>
+                    </div>
+                    {{/each}}
+                    {{/if}}
+                    <button class="form-submit" type="submit">Đăng nhập</button>
+                    <section class="form-check">
+                        <p class="form-check-text">Bạn chưa có tài khoản?</p>
+                        <a class="form-check-btn register-btn">Đăng ký</a>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const loginBtn = document.querySelector(".login-btn");
+    const registerBtn = document.querySelector(".register-btn");
+    const loginForm = document.querySelector(".login");
+    const registerForm = document.querySelector(".register")
+
+    loginBtn.addEventListener("click", function() {
+        registerForm.classList.remove("active");
+        loginForm.classList.add("active");
+    })
+    registerBtn.addEventListener("click", function() {
+        loginForm.classList.remove("active");
+        registerForm.classList.add("active");
+    })
+</script>

@@ -1,0 +1,58 @@
+<div class="container-admin">
+    <div class="admin-users">
+        <div class="row">
+            <div class="admin-control">
+                <div class="btn chart-btn">
+                    Thống kê
+                    <i class=" chart-icon fas fa-chart-pie"></i>
+                </div>
+                <div class="btn sort-btn">
+                    <p class="sort-title">Sắp xếp</p>
+                    <i class="left-icon fas fa-chevron-left"></i>
+                    <ul class="sort-list">
+                        <li class="sort-item">ID</li>
+                        <li class="sort-item">
+                            Điểm uy tín tăng
+                        </li>
+                        <li class="sort-item">
+                            Điểm uy tín giảm
+                        </li>
+                        <li class="sort-item">
+                            Tài khoản bị khóa
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col l-2">
+            </div>
+            <div class="col l-10">
+                <div class="user__label">
+                    <p class="id">STT</p>
+                    <p class="username">Tài khoản</p>
+                    <p class="fullname">Họ và tên</p>
+                    <p class="phone">Email</p>
+                    <p class="address">Địa chỉ</p>
+                    <p class="lockStatus">Trạng thái khóa</p>
+                    <p class="lockNumber">Số lần bị khóa</p>
+                    <p class="score">Điểm</p>
+                </div>
+                <div class="user__list">
+                    {{#each data}}
+                    <div class="user__item">
+                        <section class="user__item-id"><p class="id">{{@index}}</p></section>
+                        <section class="user__item-username"><p class="username">{{this.Username}}</p></section>
+                        <section class="user__item-fullname"><p class="fullname">{{this.Name}}</p></section>
+                        <section class="user__item-email"><p class="email">{{this.Email}}</p></section>
+                        <section class="user__item-address"><p class="address">{{this.Address}}</p></section>
+                        <section class="user__item-lockStatus"><p class="lockStatus">{{this.LockStatus}}</p></section>
+                        <section class="user__item-lockNumber"><p class="lockNumber">{{this.LockNumber}}</p></section>
+                        <section class="section user__item-score">
+                            <p class="score">{{this.Score}}</p>
+                        </section>
+                    </div> 
+                    {{/each}}                                                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

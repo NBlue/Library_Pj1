@@ -1,0 +1,4 @@
+Nguyên tắc thêm sách:
+ Các dữ liệu input thường sẽ lưu trong req.body
+ Img sẽ tải uploadfile express để lấy ra img và lưu trong foder của projective và trong server  
+ Tác giả: lấy value và dùng router POST: /add/:id để phía controller nhận được giá trị req.params.id và lấy được id tác giả lưu vào server

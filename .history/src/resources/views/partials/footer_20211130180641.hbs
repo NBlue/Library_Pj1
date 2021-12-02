@@ -1,0 +1,82 @@
+<footer class="footer">
+    <div class="footer__down">
+        <div class="grid wide">
+            <div class="row">
+                <div class="col l-4">
+                    <div class="footer__down-list">
+                        <div class="footer__down-list-col">
+                            <h1 class="footer__down-list-col-title">Thông tin về chúng tôi</h1>
+                            <p class="footer__down-list-col-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            <ul class="footer__down-list-col-link">
+                                <li class="footer__down-list-col-item">
+                                    <a href="https://www.facebook.com/">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </a>
+                                </li>
+                                <li class="footer__down-list-col-item">
+                                    <a href="">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="footer__down-list-col-item">
+                                    <a href="">
+                                        <i class="fab fa-github-square"></i>
+                                    </a>
+                                </li>
+                                <li class="footer__down-list-col-item">
+                                    <a href="">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-4">
+                    <section class="footer__down-list-col">
+                        <h1 class="footer__down-list-col-title">Map</h1>
+                        <img src="/img/map.PNG" alt="">
+                    </section>
+                </div>
+                <div class="col l-4">
+                    <div class="footer__down-list">
+                        <div class="footer__down-list-col">
+                            <h1 class="footer__down-list-col-title">Get in touch</h1>
+                            <div class="footer__down-list-col-list">
+                                <div class="footer__down-list-col-item">
+                                    <i class="footer__down-list-col-item-icon fas fa-map-marker-alt"></i>
+                                    <section class="footer__down-list-col-item-wrap">
+                                        <h2>Address</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                                    </section>
+                                </div>
+                                <div class="footer__down-list-col-item">
+                                    <i class="footer__down-list-col-item-icon fas fa-phone"></i>
+                                    <section class="footer__down-list-col-item-wrap">
+                                        <h2>Phone Number</h2>
+                                        <p>+84 8676741010</p>
+                                        <p>+84 8676741111</p>
+                                    </section>
+                                </div>
+                                <div class="footer__down-list-col-item">
+                                    <i class="footer__down-list-col-item-icon fas fa-envelope"></i>
+                                    <section class="footer__down-list-col-item-wrap">
+                                        <h2>Email Address</h2>
+                                        <a href="">nblue@thelibrary.com</a>
+                                    </section>
+                                </div>
+                            </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const footer = document.querySelector(".footer");
+        const containerUser = document.querySelector(".container-users");
+        if(containerUser != null) footer.classList.add("active");
+        else footer.classList.remove("active");
+    </script>
+</footer>

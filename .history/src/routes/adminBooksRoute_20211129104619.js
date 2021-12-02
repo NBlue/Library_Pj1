@@ -1,0 +1,18 @@
+const express = require("express");
+const router = express.Router();
+
+const adminBooksController = require("../app/controllers/adminBooksController");
+
+// Get book create form
+router.get("/add", adminBooksController.getAddBook);
+// Bookcreat
+router.post("/add/:id", [], adminBooksController.addNew);
+// Book detail
+router.get("/:id", adminBooksController.getById);
+// Book show
+router.get("/", adminBooksController.getList);
+
+router.put("/", adminBooksController.update);
+router.delete("/:id", adminBooksController.delete);
+
+module.exports = router;

@@ -1,0 +1,211 @@
+.modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+        ),
+        url(/img/other/login_register.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    z-index: 100;
+}
+.modal-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 80px;
+    width: 100vw;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #da4343;
+    /* color: #1877f2; */
+}
+.modal-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.login,
+.register {
+    width: 460px;
+    min-height: 100px;
+    padding: 0 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+    /* margin: 24px; */
+    align-self: center; /*Dùng cho thẻ con riêng biệt*/
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+.register {
+    width: 600px;
+}
+.acc-title {
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: 600;
+    line-height: 2.4rem;
+    margin-bottom: 16px;
+}
+.form-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form-label,
+.form-message {
+    text-align: left;
+}
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4em;
+}
+.form-control {
+    height: 34px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    outline: none;
+}
+.form-control:hover {
+    border-color: #1dbfaf;
+}
+.form-group.invalid .form-control {
+    border-color: #f33a58;
+}
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+.form-submit {
+    outline: none;
+    background-image: linear-gradient(to bottom, #1a94ff, #1877f2);
+    margin-top: 12px;
+    padding: 10px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.form-submit:hover {
+    opacity: 0.8;
+}
+.form-check {
+    margin: 12px 0 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-check-text {
+    margin: 0;
+    font-size: 1.3rem;
+    margin-right: 4px;
+}
+.form-check-btn {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.login {
+    top: 170px;
+}
+
+/* MODAL CONFIM */
+.confirm .modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm .modal.active {
+    display: flex;
+}
+.confirm .modal-dialog {
+    max-width: 700px;
+    min-width: 500px;
+    min-height: 200px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.confirm .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 12px 15px;
+}
+.confirm .modal-header h5 {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    margin: 0;
+    font-weight: 500;
+    color: #333;
+}
+.confirm .btn-close {
+    outline: none;
+    border: none;
+    padding: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.confirm .btn-close img {
+    width: 20px;
+}
+.confirm .modal-body p {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    padding: 25px 15px;
+    min-height: 76px;
+    border-bottom: 1px solid #ccc;
+}
+.confirm .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.confirm .btn-secondary {
+    margin: 12px 15px 12px 8px;
+}
+.confirm .modal-btn {
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+    border: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    box-shadow: none;
+    min-width: 60px;
+}
+.confirm .modal-confirm-btn {
+    background-color: red;
+    margin-left: auto;
+}
+.confirm .btn.btn-secondary {
+}

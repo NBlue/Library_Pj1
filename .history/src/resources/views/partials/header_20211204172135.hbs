@@ -1,0 +1,319 @@
+<header class="header">
+    <div class="grid">
+        <div class="navbar">
+            <section class="logo">
+                <a href="/" class="logo-link">
+                    <img class="logo-img" src="/img/logo.png" alt="Logo" />
+                </a>
+            </section>
+            <div class="navbar-control">
+                <div class="navbar-list">
+                    <!-- Navbar trong giao dien nguoi dung -->
+                    <div class="navbar-client">
+                        <div class="navbar-item">
+                            <a href="/" class="navbar-link">TRANG CHỦ</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="/books" class="navbar-link">SÁCH</a>
+                            <ul class="navbar-item-list">
+                                <li class="navbar-item-item">
+                                    <a href="/books/ctr_pl" class="navbar-item-link">Chính trị - Pháp luật</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/khcn_kt" class="navbar-item-link">Khoa học công nghệ - Kinh tế</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/vhnt" class="navbar-item-link">Văn học nghệ thuật</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/vhxh" class="navbar-item-link">Văn hóa xã hội - Lịch sử</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/gtr" class="navbar-item-link">Giáo trình</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/t_tth" class="navbar-item-link">Truyện, tiểu thuyết</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/tl_tg" class="navbar-item-link">Tâm lý, tâm linh, tôn giáo</a>
+                                </li>
+                                <li class="navbar-item-item">
+                                    <a href="/books/stn" class="navbar-item-link">Sách thiếu nhi</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="/authors" class="navbar-link">TÁC GIẢ</a>
+                        </div>
+                        <!-- <div class="navbar-item">
+                                        <a href="" class="navbar-link">CONTACT</a>
+                                    </div> -->
+                    </div>
+                    <!-- Navbar trong admin manager -->
+                    <div class="navbar-admin active">
+                        <div class="navbar-item">
+                            <a id="book-man" class="navbar-link">Quản lí sách
+                                <i class="navbar-item_icon fas fa-book-open"></i>
+                            </a>
+                            {{!-- href="/admin/books" --}}
+                        </div>
+                        <div class="navbar-item">
+                            <a href="/admin/authors" id="author-man" class="navbar-link">Quản lí tác giả
+                                <i class="navbar-item_icon fas fa-feather-alt"></i></a>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="/admin/users" id="user-man" class="navbar-link">Quản lí người dùng
+                                <i class="navbar-item_icon fas fa-user"></i></a>
+                        </div>
+                    </div>
+                    <div class="line" style="width: 0"></div>
+                </div>
+                <div class="navbar-group">
+                    <div class="search-wrap">
+                        <input
+                            type="text"
+                            class="search-input"
+                            placeholder="Search....."
+                        />
+                        <div class="search-btn">
+                            <i class="search-icon fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="navbar-user">
+                        {{!-- <div class="noti">
+                            <section class="bell-noti">
+                                <i class="fa fa-bell bell-noti-icon"></i>
+                                <div class="bell-noti-status"></div>
+                            </section>
+                        </div> --}}
+                        <div class="cart">
+                            {{#if context}}
+                            <section class="cart-btn">
+                                <i class="store-icon fas fa-store"></i>
+                                <span class="cart-quantity">0</span>
+                            </section>
+                            {{/if}}
+                        </div>
+                        <div class="user">
+                            <section class="not-login active">
+                                <a href="/login" class="">Đăng nhập</a>
+                            </section>
+                            {{#if context}}
+                            <section data-id="{{context.IdUser}}" class="user-login">
+                                <i class="user-icon fas fa-user-circle"></i>
+                                {{!-- <img class="user-avatar" src="/img/other/avatar_default.jpg" alt=""> --}}
+                                <p class="user-name">{{context.Username}}</p>
+                            </section>
+                            {{/if}}
+
+                            {{#if contextManager}}
+                            <section data-id="{{contextManager.IdManager}}" class="user-login user-manager">
+                                <i class="user-icon fas fa-user-circle"></i>
+                                {{!-- <img class="user-avatar" src="/img/other/avatar_default.jpg" alt=""> --}}
+                                <p class="user-name">{{contextManager.Username}}</p>
+                            </section>
+                            {{/if}}
+                            <ul class="user__list">
+                                <li class="user__item"><a
+                                        href=""
+                                        class="user__item-link"
+                                    >Tài khoản của tôi</a></li>
+                                <li class="user__item user__back"><a
+                                        href="http://localhost:3000/login"
+                                        class="user__item-link"
+                                    >Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    $(document).ready(function() {
+        $("#book-man").on("click", function(event) {
+            event.preventDefault();
+            const data = $(this).serialize();
+            console.log(data);
+            $.ajax({
+                type: "GET",
+                url: "/admin/books",
+                data: data,
+                success: function(res){
+                    console.log(res);
+                    $(".container > .grid").html(`
+                    <div class="container-admin">
+    <div class="admin-books active">
+        <div class="admin-control">
+            <a href="/admin/books/add" class="btn book__add-btn width-100">
+                Thêm sách
+                <i
+                    class="plus-icon fas fa-plus"
+                ></i>
+            </a>
+            <a href=""class="btn chart-btn width-100">
+                Thống kê
+                <i
+                    class="
+                        chart-icon
+                        fas
+                        fa-chart-pie
+                    "
+                ></i>
+            </a>
+            <a href=""class="btn sort-btn width-100">
+                <p class="sort-title">Sắp xếp</p>
+                <i
+                    class="
+                        left-icon
+                        fas
+                        fa-chevron-left
+                    "
+                ></i>
+                <ul class="sort-list">
+                    <li class="sort-item">ID</li>
+                    <li class="sort-item">Nhiều sách</li>
+                    <li class="sort-item">Ít sách</li>
+                    <li class="sort-item">Mượn nhiều</li>
+                    <li class="sort-item">Mượn ít</li>
+                </ul>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col l-2">
+            </div>
+            <div class="col l-10">
+                <div class="book__label">
+                    <p class="id">ID sách</p>
+                    <p class="name">Tên sách</p>
+                    <p class="type">Thể loại</p>
+                    <p class="review">Giới thiệu</p>
+                    <p class="quantity">Số lượng</p>
+                    <p class="img">Ảnh</p>
+                    <p class="like">Lượt thích</p>
+                    <p class="action">Tùy chọn</p>
+                </div>
+                <div class="book__list">
+
+                    {{#each data}}
+                    <div class="book__item">
+                        <section class="book__item-id">
+                            <p class="id_text">{{sum @index 1}}</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">{{this.Name}}</p>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">{{this.TypeBook}}</p>
+                        </section>
+                        <section class="book__item-review">
+                            <p class="review_text">{{this.Review}}</p>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">{{this.Quantity}}</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section class="img" style="background-image: url(/img/books/{{this.ImgBook}});"></section>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">{{this.LikeBook}}</p>
+                        </section>
+                        <section class="book__item-action">
+                            <section class="action_btn">
+                                <i class="action_update-icon fas fa-pen-square"></i>
+                            </section>
+                            <section class="action_btn">
+                                <i class="action_delete-icon fas fa-trash-alt"></i>
+                            </section>
+                        </section>
+                    </div>                    
+                    {{/each}}
+                    
+                </div>
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        <li class="pagination-item">
+                            <a href="" class="pagination-prev"><i class="fas fa-angle-double-left"></i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">1</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">2</i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-number">3</i></a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="" class="pagination-next"><i class="fas fa-angle-double-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    `);
+                    console.log("Successfull");
+                },
+                error: function(){
+
+                }    
+            })
+        })
+    })
+    /*window.onload = function () { 
+        const line = document.querySelector(".navbar-list .line");
+        const navAdmin = document.querySelector(".navbar-admin");
+        const navClient = document.querySelector(".navbar-client");
+        const containerUser = document.querySelector(".container-users");
+        const containerAdmin = document.querySelector(".container-admin");
+        const BackAcc = document.querySelector(".navbar-user .user__back");
+
+        if(containerAdmin != null){
+            navAdmin.classList.add("active");
+            navClient.classList.remove("active");
+            const adminBook = document.querySelector(".admin-books");
+            const adminUser = document.querySelector(".admin-users");
+            const adminAuthor = document.querySelector(".admin-authors");
+            var count;
+            if(adminAuthor != null){
+                count = 2;
+            } else if(adminUser != null){
+                count = 3
+            } else if(adminBook != null){
+                count = 1;
+            }
+            console.log(count);
+            const tabs = document.querySelectorAll(".navbar-admin .navbar-item");
+            tabs.forEach((tab, index) => {
+                if(index + 1 === count ){
+                    tab.classList.add("active"); 
+                    line.style.left = tab.offsetLeft + "px";
+                    line.style.width = tab.offsetWidth + "px";
+                }
+            })
+            
+
+        }
+        if(containerUser != null){
+            navClient.classList.add("active");
+            navAdmin.classList.remove("active");
+        }
+    }
+
+    const userLogin = document.querySelector(".user-login");
+    const notLogin = document.querySelector(".not-login");
+    if(userLogin != null){
+        var dataId = userLogin.getAttribute("data-id");
+        if(dataId !== ""){
+            userLogin.classList.add("active");
+            notLogin.classList.remove("active");
+        }else{
+            userLogin.classList.remove("active");
+            notLogin.classList.add("active");
+        }
+    } */
+</script>

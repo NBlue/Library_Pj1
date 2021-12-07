@@ -1,0 +1,27 @@
+<div class="container-users">
+    <div class="book-detail">
+        <div class="book-detail-up">
+            <img src="/img/books/{{data.ImgBook}}" alt="" class="book-img">
+            <div class="book-info">
+                <h3 class="book-info-name">{{data.Name}}</h3>
+                <p class="book-info-author">Tác giả: 
+                    <span>Nguyen Nam</span>
+                </p>
+                <p class="book-info-typebook">Thể loại:
+                    <span>{{data.TypeBook}}</span>
+                </p>
+                <section class="book-info-like">
+                    <p>Lượt thích:
+                        <span>{{data.TypeBook}}</span>   
+                    </p>
+                    <i class="fas fa-heart"></i>
+                </section>
+                <p class="book-info-quantity">Số lượng: {{data.Quantity}}</p>
+                <button class="btn btn-primary btn-add-cart">Thêm vào giỏ sách</button>
+            </div>
+        </div>
+        <div class="book-detail-down">
+            <p class="book-info-review">{{data.Review}}</p>
+        </div>
+    </div>
+</div>

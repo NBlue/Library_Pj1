@@ -1,0 +1,61 @@
+<div class="container-users">
+    <div class="cart__books">
+        <div class="grid wide">
+            <h1 class="title">Mượn sách</h1>
+            <div class="row">
+                <div class="col l-9">
+                    <div class="cart__books-info">
+                        <ul class="labels">
+                            <li class="label"> Ảnh</li>
+                            <li class="label"> Tên</li>
+                            <li class="label"> Tác giả</li>
+                            <li class="label">Thể loại</li>
+                            {{!-- <li class="label"> Xóa</li> --}}
+                        </ul>
+                        <ul class="books">
+                            <li class="book">
+                                <section class="book-img">
+                                    <img src="/img/books/{{data.ImgBook}}" alt="">
+                                </section>
+                                <p class="book-name">{{data.Name}}</p>
+                                <p class="book-author">{{data.nameAuthor}}</p>
+                                <p class="book-type">{{data.TypeBook}}</p>
+                                {{!-- <section class="book-delete">
+                                    <button class="book-delete-btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </section> --}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col l-3">
+                    <div class="cart__books-confirm">
+                        <section class="time">
+                            <p class="time-title">Thời gian mượn sách:</p>
+                            <input disabled type="date" class="time-date time-borrow">
+                        </section>
+                        <section class="time">
+                            <p class="time-title">Thời gian trả sách:</p>
+                            <input type="date" class="time-date time-give">
+                        </section>
+                    </div>
+                    <button class="btn cart___books-confirm-btn">Xác nhận mượn sách</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var myDate = document.querySelector(".time-borrow");
+        var returnDate = document.querySelector(".time-give");
+        var today = new Date();
+        myDate.value = today.toISOString().substr(0, 10) 
+
+        var dateDefaut = today
+        returnDate.min = today.toISOString().substr(0, 10) 
+        dateDefaut.setMonth(dateDefaut.getMonth() + 1);
+        returnDate.value = dateDefaut.toISOString().substr(0, 10);
+        dateDefaut.setMonth(dateDefaut.getMonth() + 1);
+        returnDate.max = dateDefaut.toISOString().substr(0, 10);
+    </script>
+</div>

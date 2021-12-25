@@ -197,11 +197,6 @@ class SiteController {
         modelSite.borrowNewBook(dataBorrow, (err, data) => {});
         res.redirect("back");
     }
-
-    // GET my book borow
-    getMyBookBorrow(req, res) {
-        res.render("site/bookBorrow");
-    }
 }
 
 module.exports = new SiteController();

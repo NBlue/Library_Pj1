@@ -200,7 +200,7 @@ class SiteController {
 
     // GET my book borow
     getMyBookBorrow(req, res) {
-        res.render("site/bookBorrow");
+        res.render("site/bookBook");
     }
 }
 

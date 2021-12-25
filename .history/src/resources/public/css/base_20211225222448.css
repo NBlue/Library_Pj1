@@ -224,5 +224,5 @@ html {
     color: var(--warning);
 }
 .danger {
-    color: red;
+    color: var(--danger);
 }

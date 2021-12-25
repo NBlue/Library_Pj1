@@ -712,7 +712,6 @@
     overflow-y: auto;
     margin-bottom: 20px;
 }
-.borrowed .labels,
 .borrowing .labels,
 .cart__books-info .labels {
     padding: 0;
@@ -723,7 +722,6 @@
     border-top: 3px solid #eee;
     border-bottom: 3px solid #eee;
 }
-.borrowed .label,
 .borrowing .label,
 .cart__books-info .label {
     list-style: none;
@@ -733,9 +731,6 @@
     flex: 1;
     text-align: center;
 }
-
-.borrowed .book-img,
-.borrowed .book-author,
 .borrowing .book-img,
 .borrowing .book-author,
 .borrowing .book-BorrowDate,
@@ -749,14 +744,12 @@
     text-align: center;
 }
 
-.borrowed .books,
 .borrowing .books,
 .cart__books-info .books {
     margin: 0;
     padding: 0;
 }
 
-.borrowed .book,
 .borrowing .book,
 .cart__books-info .book {
     border-bottom: 2px solid #eee;
@@ -765,7 +758,6 @@
     justify-content: space-around;
     align-items: center;
 }
-.borrowed .book-img,
 .borrowing .book-img,
 .cart__books-info .book-img {
     display: flex;
@@ -773,8 +765,6 @@
     align-items: center;
     flex: 1;
 }
-
-.borrowed .book-img img,
 .borrowing .book-img img {
     width: 80px;
     margin: 8px auto;
@@ -790,8 +780,6 @@
     border: 0px;
 }
 
-.borrowed .book-name,
-.borrowed .book-author,
 .borrowing .book-name,
 .borrowing .book-author,
 .borrowing .book-BorrowDate,
@@ -811,7 +799,6 @@
     flex: 1;
 }
 
-.borrowed .book-action,
 .borrowing .book-action {
     margin: 0;
     padding: 0;
@@ -820,7 +807,7 @@
     align-items: center;
     flex: 1;
 }
-.borrowing .book-return-btn {
+.borrowing .book-delete-btn {
     border: 0;
     font-size: 1.4rem;
     background-color: var(--primary-color);
@@ -830,7 +817,7 @@
     box-shadow: 1px 1px 3px rgb(0 0 0 / 50%);
     cursor: pointer;
 }
-.borrowing .book-return-btn:hover {
+.borrowing .book-delete-btn:hover {
     opacity: 0.8;
 }
 .cart__books-info .book-number-item {
@@ -1140,34 +1127,4 @@
     border: 1px solid #aaa;
     padding: 2px 8px;
     border-radius: 3px;
-}
-
-.borrowed,
-.borrowing {
-    display: none;
-}
-
-.borrowed.active,
-.borrowing.active {
-    display: block;
-}
-.borrowed .action-btn {
-    border: 0px;
-    font-size: 1.4rem;
-    padding: 8px;
-    border-radius: 3px;
-    color: #fff;
-    margin: 4px;
-    min-width: 100px;
-    box-shadow: 1px 1px 3px rgb(0 0 0 / 50%);
-    cursor: pointer;
-}
-.borrowed .action-btn:hover {
-    opacity: 0.8;
-}
-.borrowed .detail-btn {
-    background-color: var(--primary-color);
-}
-.borrowed .borrow-btn {
-    background-color: var(--teal);
 }

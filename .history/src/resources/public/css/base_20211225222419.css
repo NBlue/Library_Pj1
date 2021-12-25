@@ -223,6 +223,3 @@ html {
 .warning {
     color: var(--warning);
 }
-.danger {
-    color: red;
-}

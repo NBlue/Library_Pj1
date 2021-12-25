@@ -1,0 +1,41 @@
+<div class="container-users">
+    <div class="grid wide">
+        <div class="myBorrow">
+            <div class="myBorrow-header">
+                <h1>Xem danh sách: </h1>
+                <select class="form-control type-borrow">
+                    <option value="Sách đang mượn">Sách đang mượn</option>
+                    <option value="Sách đã mượn">Sách đã mượn</option>
+                </select>
+            </div>
+            <div class="myBorrow-content">
+                <div class="borrowing">
+                    <div class="cart__books-info">
+                        <ul class="labels">
+                            <li class="label"> Ảnh</li>
+                            <li class="label"> Tên</li>
+                            <li class="label"> Tác giả</li>
+                            <li class="label"> Thể loại</li>
+                            {{!-- <li class="label"> Xóa</li> --}}
+                        </ul>
+                        <ul class="books">
+                            <li class="book">
+                                <section class="book-img">
+                                    <img src="/img/books/{{data.ImgBook}}" alt="">
+                                </section>
+                                <p class="book-name">{{data.Name}}</p>
+                                <p class="book-author">{{data.nameAuthor}}</p>
+                                <p class="book-type">{{data.TypeBook}}</p>
+                                {{!-- <section class="book-delete">
+                                    <button class="book-delete-btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </section> --}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

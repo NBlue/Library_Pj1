@@ -820,7 +820,7 @@
     align-items: center;
     flex: 1;
 }
-.borrowing .book-return-btn {
+.borrowing .book-delete-btn {
     border: 0;
     font-size: 1.4rem;
     background-color: var(--primary-color);
@@ -830,7 +830,7 @@
     box-shadow: 1px 1px 3px rgb(0 0 0 / 50%);
     cursor: pointer;
 }
-.borrowing .book-return-btn:hover {
+.borrowing .book-delete-btn:hover {
     opacity: 0.8;
 }
 .cart__books-info .book-number-item {
@@ -1142,32 +1142,9 @@
     border-radius: 3px;
 }
 
-.borrowed,
 .borrowing {
     display: none;
 }
-
-.borrowed.active,
 .borrowing.active {
     display: block;
-}
-.borrowed .action-btn {
-    border: 0px;
-    font-size: 1.4rem;
-    padding: 8px;
-    border-radius: 3px;
-    color: #fff;
-    margin: 4px;
-    min-width: 100px;
-    box-shadow: 1px 1px 3px rgb(0 0 0 / 50%);
-    cursor: pointer;
-}
-.borrowed .action-btn:hover {
-    opacity: 0.8;
-}
-.borrowed .detail-btn {
-    background-color: var(--primary-color);
-}
-.borrowed .borrow-btn {
-    background-color: var(--teal);
 }

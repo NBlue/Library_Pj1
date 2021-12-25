@@ -4,7 +4,7 @@
     --black-color: #000;
     --text-color: #333;
     --777-color: #777777;
-    --header-height: 80px;
+    --header-height: 70px;
 }
 
 .btn {
@@ -26,6 +26,7 @@
 }
 .btn:hover {
     opacity: 0.8;
+    color: #fff;
 }
 .btn-disable {
     opacity: 0.5 !important;
@@ -114,6 +115,7 @@ html {
     margin-top: 12px;
     margin-bottom: 12px;
     position: relative;
+    height: auto;
 }
 .book__item-display {
     padding: 12px 0;
@@ -207,7 +209,7 @@ html {
 .btn__add-cart {
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid #fff;
-    color: #fff;
+    color: #fff !important;
     text-shadow: none;
     border-radius: 0;
     transition: all 0.2s linear;
@@ -215,6 +217,12 @@ html {
 .btn__detail:hover,
 .btn__add-cart:hover {
     background-color: #fff;
-    color: #000;
-    font-weight: 500;
+    color: #000 !important;
+}
+
+.warning {
+    color: var(--warning);
+}
+.danger {
+    color: red;
 }

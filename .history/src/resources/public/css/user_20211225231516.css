@@ -1160,14 +1160,11 @@
     margin: 4px;
     min-width: 100px;
     box-shadow: 1px 1px 3px rgb(0 0 0 / 50%);
-    cursor: pointer;
 }
 .borrowed .action-btn:hover {
     opacity: 0.8;
 }
 .borrowed .detail-btn {
-    background-color: var(--primary-color);
 }
 .borrowed .borrow-btn {
-    background-color: var(--teal);
 }

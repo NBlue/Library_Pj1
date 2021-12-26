@@ -1,0 +1,128 @@
+<div class="container-users">
+    <div class="grid wide">
+        <div class="myBorrow">
+            <div class="myBorrow-header">
+                <h1>Xem danh sách: </h1>
+                <select class="form-control type-borrow" onchange="getVal()">
+                    <option value="Sách đang mượn">Sách đang mượn</option>
+                    <option value="Sách đã mượn">Sách đã mượn</option>
+                </select>
+                <section class="number-borrow">
+                    <h3>Số lượng: </h3>
+                    <span> </span>
+                </section>
+            </div>
+            <div class="myBorrow-content">
+                {{!-- Borrowing Book --}}
+                <div class="borrowing active">
+                    <ul class="labels">
+                        <li class="label"> Ảnh</li>
+                        <li class="label"> Tên sách</li>
+                        <li class="label"> Tác giả</li>
+                        <li class="label"> Ngày mượn</li>
+                        <li class="label"> Ngày trả</li>
+                        <li class="label"> Ghi chú</li>
+                        <li class="label"> Hành động</li>
+                    </ul>
+                    <ul class="books">
+
+                        {{#each BorrowingBook}}
+                        <li class="book">
+                            <section class="book-img">
+                                <img src="/img/books/{{this.ImgBook}}" alt="">
+                            </section>
+                            <p class="book-name">{{this.Name}}</p>
+                            <p class="book-author">{{this.NameAuthor}}</p>
+                            <input class="book-BorrowDate" disabled type="date" value="{{this.BorrowDate}}">
+                            <input class="book-ReturnDate" disabled type="date" value="{{this.ReturnDatePlan}}">
+                            <p class="book-note"></p>
+                            <section class="book-action">
+                                <button ty class="book-return-btn">
+                                    Trả sách
+                                </button>
+                            </section>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                {{!-- Borrowed Book--}}
+                <div class="borrowed ">
+                    <ul class="labels">
+                        <li class="label"> Ảnh</li>
+                        <li class="label"> Tên sách</li>
+                        <li class="label"> Tác giả</li>
+                        <li class="label"> Hành động</li>
+                    </ul>
+                    <ul class="books">
+                        {{#each BorrowedBook}}
+                        <li class="book">
+                            <section class="book-img">
+                                <img src="/img/books/{{this.ImgBook}}" alt="">
+                            </section>
+                            <p class="book-name">{{this.Name}}</p>
+                            <p class="book-author">{{this.NameAuthor}}</p>
+                            <section class="book-action">
+                                <a href="books/detail/{{this.IdBook}}" class="action-btn detail-btn">
+                                    Xem chi tiết
+                                </a>
+                                <a href="books/borrowing/{{this.IdBook}}" class="action-btn borrow-btn">
+                                    Mượn lại
+                                </a>
+                            </section>
+                        </li>
+                        {{/each}}
+                        <li><p>Xem thêm</p></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <script type="text/javascript">
+                var numberBorrow = document.querySelector(".number-borrow span");
+                var borrowingNumber = document.querySelectorAll(".borrowing .book");
+                numberBorrow.textContent = "" + borrowingNumber.length 
+
+                function getVal() {
+                    var typeBook = document.querySelector(".type-borrow");
+                    var borrowed = document.querySelector(".borrowed");
+                    var borrowing = document.querySelector(".borrowing");
+                    if(typeBook.value === "Sách đang mượn"){
+                        borrowingNumber = document.querySelectorAll(".borrowing .book");
+                        borrowing.classList.add("active");
+                        borrowed.classList.remove("active");
+                        numberBorrow.textContent = "" + borrowingNumber.length 
+                    } else if (typeBook.value === "Sách đã mượn"){
+                        var borrowedNumber = document.querySelectorAll(".borrowed .book");
+                        borrowed.classList.add("active");
+                        borrowing.classList.remove("active");
+                        numberBorrow.textContent = "" + borrowedNumber.length 
+                    }
+                }
+
+                var typeBookOption = document.querySelector(".type-borrow")
+                console.log(typeBook.value);
+                
+                // Hiện thông báo còn bao nhiêu ngày
+                var returnDatePlanElement = document.querySelectorAll(".borrowing .book-ReturnDate");
+                for(let e of returnDatePlanElement){
+                    let returnDatePlan = e.value;
+                    let today = new Date();
+                    let dateNow = today.toISOString().substr(0, 10)
+                    const limit = (new Date(returnDatePlan)- new Date(dateNow))/(1000 * 60 * 60 * 24);
+                    
+                    let noteElement = e.closest(".book").querySelector(".book-note")
+                    if(limit > 10){
+                        noteElement.textContent = "Hạn mượn còn " + limit + " ngày" 
+                    } else if (limit > 0 && limit <= 5){
+                        noteElement.classList.add("warning");
+                        noteElement.textContent = "Hạn mượn còn " + limit + " ngày" 
+                    } else {
+                        noteElement.classList.add("danger");
+                        noteElement.textContent = "Mượn quá hạn " + (-limit) + " ngày"
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</div>

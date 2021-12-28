@@ -274,19 +274,17 @@
                 <form name="returnBook" method="POST" style="margin: 0"></form>
                 <script>
                     var confirmModal = document.querySelector(".modal-returnBook .modal")
-                    var idBook, flat;
+                    var idBook;
+
+
 
                     function onConfirm(e){
                         idBook = e.getAttribute("data-id")
                         confirmModal.classList.add("active");
 
-                        var remind = document.querySelector(".remind");
                         if(e.closest(".book").querySelector(".book-note.danger") !== null){
+                            var remind = document.querySelector(".remind");
                             remind.classList.add("active");
-                            flat = "_qh";
-                        } else {
-                            remind.classList.remove("active");
-                            flat = "";
                         }
                     }
                     function onBack() {
@@ -295,7 +293,7 @@
                     function onConfirmBorrow(){
                         console.log("click");
                         var returnForm = document.forms['returnBook']
-                        returnForm.action = "./myBookBorrow/" + idBook + flat;
+                        returnForm.action = "./myBookBorrow/" + idBook;
                         returnForm.submit();
                     }
                 </script>

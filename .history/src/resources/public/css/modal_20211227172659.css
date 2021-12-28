@@ -234,9 +234,6 @@
     align-items: center;
     padding: 4px 12px;
 }
-.remind.active {
-    display: flex;
-}
 .remind-icon {
     font-size: 3rem;
     color: var(--danger);

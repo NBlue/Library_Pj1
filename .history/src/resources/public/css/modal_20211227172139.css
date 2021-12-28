@@ -229,20 +229,11 @@
     margin: auto;
 }
 .remind {
-    display: none;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 4px 12px;
-}
-.remind.active {
-    display: flex;
 }
 .remind-icon {
-    font-size: 3rem;
-    color: var(--danger);
 }
 .remind-text {
-    font-size: 1.8rem;
-    color: var(--danger);
-    margin-left: 8px;
 }

@@ -6,7 +6,7 @@
                 <div class="book-info">
                     <h3 class="book-info-name">{{data.Name}}</h3>
                     <p class="book-info-author">Tác giả: 
-                        <span>{{data.NameAuthor}}</span>
+                        <span>{{data.NameBook}}</span>
                     </p>
                     <p class="book-info-typebook">Thể loại:
                         <span>{{data.TypeBook}}</span>
@@ -18,7 +18,7 @@
                         <span>{{data.Quantity}}</span>
                     </p>
 
-                    <button class="btn btn-primary btn-add-cart" onclick=" window.location.href = 'http://localhost:3000/books/borrowing/{{data.IdBook}}'">Mượn sách</button>
+                    <button class="btn btn-primary btn-add-cart">Mượn sách</button>
                 </div>
             </div>
             <p class="book-info-review">{{data.Review}}</p>

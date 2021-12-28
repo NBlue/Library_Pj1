@@ -218,20 +218,4 @@ module.exports = function () {
             console.log(err);
         }
     };
-
-    this.updateScoreUser = async function (IdUser, Score) {
-        try {
-            let pool = await conn;
-            let data = await pool
-                .request()
-                .input("Score", sql.Int, Score - 10)
-                .input("IdUser", sql.Int, IdUser)
-                .query(
-                    "UPDATE Users SET Score = @Score WHERE IdUser = @IdUser"
-                );
-            return data.recordset;
-        } catch (err) {
-            console.log(err);
-        }
-    };
 };

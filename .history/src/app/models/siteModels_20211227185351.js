@@ -206,29 +206,13 @@ module.exports = function () {
         }
     };
 
-    this.getScoreUser = async function (IdUser) {
+    this.updateScoreUser = async function (IdUser) {
         try {
             let pool = await conn;
             let data = await pool
                 .request()
                 .input("IdUser", sql.Int, IdUser)
-                .query("SELECT Score FROM Users WHERE IdUser = @IdUser");
-            return data.recordset;
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    this.updateScoreUser = async function (IdUser, Score) {
-        try {
-            let pool = await conn;
-            let data = await pool
-                .request()
-                .input("Score", sql.Int, Score - 10)
-                .input("IdUser", sql.Int, IdUser)
-                .query(
-                    "UPDATE Users SET Score = @Score WHERE IdUser = @IdUser"
-                );
+                .query("SELECT * FROM Users WHERE IdUser = @IdUser");
             return data.recordset;
         } catch (err) {
             console.log(err);

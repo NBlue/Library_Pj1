@@ -152,7 +152,7 @@ module.exports = function () {
                 .request()
                 .input("IdBook", sql.Int, IdBook)
                 .query("SELECT * FROM Books WHERE IdBook = @IdBook");
-            return data.recordset[0];
+            return data.recordset;
         } catch (err) {
             console.log(err);
         }

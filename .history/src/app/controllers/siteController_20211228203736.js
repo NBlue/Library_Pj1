@@ -274,7 +274,7 @@ class SiteController {
             var dataBook = await modelBooks.findBookById(id[0]);
             var updateQuantity = await modelBooks.updateQuantity(
                 id[0],
-                dataBook.Quantity + 1
+                dataBook + 1
             );
             console.log({ "dataBook:": dataBook });
             res.redirect("back");

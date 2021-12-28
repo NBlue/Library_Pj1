@@ -145,19 +145,6 @@ module.exports = function () {
         });
     };
 
-    this.findBookById = async function (IdBook) {
-        try {
-            let pool = await conn;
-            let data = await pool
-                .request()
-                .input("IdBook", sql.Int, IdBook)
-                .query("SELECT * FROM Books WHERE IdBook = @IdBook");
-            return data.recordset[0];
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
     this.updateQuantity = async function (IdBook, newQuantity) {
         try {
             let pool = await conn;

@@ -13,6 +13,7 @@ class SiteController {
         var context = req.session.context;
         modelBooks.getTopPopularByQuantity((err, bookPopular) => {
             modelAuthors.getTopAuthor((err, topAuthor) => {
+                console.log(topAuthor);
                 res.render("user/user_home", {
                     context,
                     bookPopular,
@@ -193,15 +194,9 @@ class SiteController {
         var dataBorrow = req.body;
         dataBorrow.IdUser = context.IdUser;
         dataBorrow.IdBook = req.params.id;
-
-        modelSite.borrowNewBook(dataBorrow, async (err, data) => {
-            var dataBook = await modelBooks.findBookById(req.params.id);
-            var update = await modelBooks.updateQuantity(
-                req.params.id,
-                dataBook.Quantity - 1
-            );
-            res.redirect("back");
-        });
+        console.log(dataBorrow);
+        modelSite.borrowNewBook(dataBorrow, (err, data) => {});
+        res.redirect("back");
     }
 
     // GET my book borow
@@ -225,7 +220,7 @@ class SiteController {
                 }
                 e.NameAuthor = nameAuthor;
             }
-            // console.log({ "Borrowing: ": BorrowingBook });
+            console.log({ "Borrowing: ": BorrowingBook });
 
             // Borrowed
             let BorrowedBook = await modelSite.getBookBorrowed(context.IdUser);
@@ -242,7 +237,7 @@ class SiteController {
                 }
                 e.NameAuthor = nameAuthor;
             }
-            // console.log({ "Borrowed: ": BorrowedBook });
+            console.log({ "Borrowed: ": BorrowedBook });
             res.render("site/bookBorrow", {
                 context,
                 BorrowingBook,
@@ -269,14 +264,6 @@ class SiteController {
                 console.log(updateScore);
             }
             var data = await modelSite.returnBook(id[0], dateNow);
-
-            // Lấy ra sách có id trên và cập nhập số lượng
-            var dataBook = await modelBooks.findBookById(id[0]);
-            var updateQuantity = await modelBooks.updateQuantity(
-                id[0],
-                dataBook.Quantity + 1
-            );
-            console.log({ "dataBook:": dataBook });
             res.redirect("back");
         }
         returnBookActual();

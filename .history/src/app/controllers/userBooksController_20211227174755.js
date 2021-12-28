@@ -84,18 +84,7 @@ class BooksController {
     //Book Details
     getBookDetail(req, res) {
         var context = req.session.context;
-        modelBooks.getBookDetail(req.params.id, async (err, data) => {
-            let authors = await modelAuthors.findByIdBook(data.IdBook);
-            let nameAuthor = "";
-            if (authors.length === 1) {
-                nameAuthor += authors[0].Name;
-            } else {
-                for (let i = 0; i < authors.length; i++) {
-                    nameAuthor += authors[i].Name;
-                    if (i !== authors.length - 1) nameAuthor += ", ";
-                }
-            }
-            data.NameAuthor = nameAuthor;
+        modelBooks.getBookDetail(req.params.id, (err, data) => {
             console.log(data);
             res.render("user/detail_book", { context, data });
         });

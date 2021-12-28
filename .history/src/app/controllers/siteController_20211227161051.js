@@ -13,6 +13,7 @@ class SiteController {
         var context = req.session.context;
         modelBooks.getTopPopularByQuantity((err, bookPopular) => {
             modelAuthors.getTopAuthor((err, topAuthor) => {
+                console.log(topAuthor);
                 res.render("user/user_home", {
                     context,
                     bookPopular,
@@ -122,6 +123,7 @@ class SiteController {
         const errors = validationResult(req);
         const dataUser = req.body;
         const errMess = {};
+        console.log(req.body);
         if (dataUser.password_new !== undefined) {
             var oldData = req.body;
             oldData.IdUser = req.params.id;
@@ -152,11 +154,9 @@ class SiteController {
                 var oldData = req.body;
                 oldData.IdUser = req.params.id;
                 var alert = { alert: "alert" };
-                modelSite.updateInforUser(oldData, (err, data) => {
-                    modelSite.getAccUserById(data.IdUser, (err, dataUser) => {
-                        console.log(dataUser);
-                        res.render("user/accout", { context, alert, dataUser });
-                    });
+                modelSite.updateInforUser(oldData, (err, dataUser) => {
+                    console.log(dataUser);
+                    res.render("user/accout", { context, alert, dataUser });
                 });
             }
         }
@@ -193,15 +193,9 @@ class SiteController {
         var dataBorrow = req.body;
         dataBorrow.IdUser = context.IdUser;
         dataBorrow.IdBook = req.params.id;
-
-        modelSite.borrowNewBook(dataBorrow, async (err, data) => {
-            var dataBook = await modelBooks.findBookById(req.params.id);
-            var update = await modelBooks.updateQuantity(
-                req.params.id,
-                dataBook.Quantity - 1
-            );
-            res.redirect("back");
-        });
+        console.log(dataBorrow);
+        modelSite.borrowNewBook(dataBorrow, (err, data) => {});
+        res.redirect("back");
     }
 
     // GET my book borow
@@ -225,7 +219,7 @@ class SiteController {
                 }
                 e.NameAuthor = nameAuthor;
             }
-            // console.log({ "Borrowing: ": BorrowingBook });
+            console.log({ "Borrowing: ": BorrowingBook });
 
             // Borrowed
             let BorrowedBook = await modelSite.getBookBorrowed(context.IdUser);
@@ -242,7 +236,7 @@ class SiteController {
                 }
                 e.NameAuthor = nameAuthor;
             }
-            // console.log({ "Borrowed: ": BorrowedBook });
+            console.log({ "Borrowed: ": BorrowedBook });
             res.render("site/bookBorrow", {
                 context,
                 BorrowingBook,
@@ -254,29 +248,10 @@ class SiteController {
 
     // POST return date
     returnBook(req, res) {
-        var context = req.session.context;
         async function returnBookActual() {
             var today = new Date();
             var dateNow = today.toISOString().substr(0, 10);
-            var id = req.params.id.split("_");
-            if (id.length > 1) {
-                let Score = await modelSite.getScoreUser(context.IdUser);
-                console.log(Score);
-                let updateScore = await modelSite.updateScoreUser(
-                    context.IdUser,
-                    Score[0].Score
-                );
-                console.log(updateScore);
-            }
-            var data = await modelSite.returnBook(id[0], dateNow);
-
-            // Lấy ra sách có id trên và cập nhập số lượng
-            var dataBook = await modelBooks.findBookById(id[0]);
-            var updateQuantity = await modelBooks.updateQuantity(
-                id[0],
-                dataBook.Quantity + 1
-            );
-            console.log({ "dataBook:": dataBook });
+            var data = await modelSite.returnBook(req.params.id, dateNow);
             res.redirect("back");
         }
         returnBookActual();

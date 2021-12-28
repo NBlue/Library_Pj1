@@ -193,13 +193,14 @@ class SiteController {
         var dataBorrow = req.body;
         dataBorrow.IdUser = context.IdUser;
         dataBorrow.IdBook = req.params.id;
-
-        modelSite.borrowNewBook(dataBorrow, async (err, data) => {
-            var dataBook = await modelBooks.findBookById(req.params.id);
-            var update = await modelBooks.updateQuantity(
-                req.params.id,
-                dataBook.Quantity - 1
-            );
+        modelBooks.findBooksById(req.params.id, (err, dataBook) => {
+            console.log(dataBook);
+            console.log(dataBook.Quantity);
+            // var update = await modelBooks.updateQuantity(
+            //     req.params.id,
+            //     dataBook.Quantity - 1
+            // );
+            //modelSite.borrowNewBook(dataBorrow, (err, data) => {});
             res.redirect("back");
         });
     }
@@ -269,14 +270,6 @@ class SiteController {
                 console.log(updateScore);
             }
             var data = await modelSite.returnBook(id[0], dateNow);
-
-            // Lấy ra sách có id trên và cập nhập số lượng
-            var dataBook = await modelBooks.findBookById(id[0]);
-            var updateQuantity = await modelBooks.updateQuantity(
-                id[0],
-                dataBook.Quantity + 1
-            );
-            console.log({ "dataBook:": dataBook });
             res.redirect("back");
         }
         returnBookActual();

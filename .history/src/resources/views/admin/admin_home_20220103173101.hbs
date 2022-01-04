@@ -1,0 +1,93 @@
+<div class="container-admin">
+    <div class="admin-home">
+        <div class="grid wide">
+            <div class="statistic">
+                <div class="row">
+                    <div class="col l-6">
+                        <div class="statistic_wrap">
+                            <div class="statistic_users">
+                                <div class="lock">
+                                    <h1 class="lock_title">Người dùng tạm thời bị khóa</h1>
+                                    <ul class="lock_list-title">
+                                        <p class="lock_list-title-id">Id</p>
+                                        <p class="lock_list-title-name">Tên</p>
+                                        <p class="lock_list-title-status">Trạng thái</p>
+                                        <p class="lock_list-title-action">Hành động</p>
+                                    </ul>
+                                    <ul class="lock_list">
+                                        <li class="lock_item">
+                                            <p class="lock_item-id">10</p>
+                                            <p class="lock_item-name">Đào Xuân An</p>
+                                            <p class="lock_item-status">Có thể mở khóa</p>
+                                            <a href="" class="lock_item-button">Mở khóa</a>
+                                        </li>
+                                        <li class="lock_item">
+                                            <p class="lock_item-id">10</p>
+                                            <p class="lock_item-name">Đào Xuân An</p>
+                                            <p class="lock_item-status">Có thể mở khóa</p>
+                                            <a href="" class="lock_item-button">Mở khóa</a>
+                                        </li>
+                                        <li class="lock_item">
+                                            <p class="lock_item-id">10</p>
+                                            <p class="lock_item-name">Đào Xuân An</p>
+                                            <p class="lock_item-status">Có thể mở khóa</p>
+                                            <a href="" class="lock_item-button">Mở khóa</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                .waring-log
+                            </div>
+                            <div class="statistic_author">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="statistic_book">
+                            <canvas id="myChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+             <script>
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [12, 19, 3, 5, 2, 3],
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 206, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(153, 102, 255)',
+                                'rgb(255, 159, 64)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>

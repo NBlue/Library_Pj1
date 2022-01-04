@@ -1,0 +1,176 @@
+<div class="container-admin">
+    <div class="admin-home">
+        <div class="grid">
+            <div class="statistic">
+                <div class="row">
+                    <div class="col l-5">
+                        <div class="statistic_users">
+                            <div class="lock">
+                                <h1 class="title">Người dùng tạm thời bị khóa</h1>
+                                <div class="wrap">
+                                    <ul class="list-title">
+                                        <p class="list-title-id">Id</p>
+                                        <p class="list-title-name">Tên</p>
+                                        <p class="list-title-status">Trạng thái</p>
+                                        <p class="list-title-action">Hành động</p>
+                                    </ul>
+                                    <ul class="list">
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-status">Có thể mở khóa</p>
+                                            <a href="" class="item-button">Mở khóa</a>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-status">Có thể mở khóa</p>
+                                            <a href="" class="item-button">Mở khóa</a>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-status">Có thể mở khóa</p>
+                                            <a href="" class="item-button">Mở khóa</a>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-status warning">Khóa 15 ngày</p>
+                                            <a href="" class="item-button block">Mở khóa</a>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-status">Có thể mở khóa</p>
+                                            <a href="" class="item-button">Mở khóa</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="waring-lock">
+                                <h1 class="title">Người dùng có điểm ở mức thấp</h1>
+                                <div class="wrap">
+                                    <ul class="list-title">
+                                        <p class="list-title-id">Id</p>
+                                        <p class="list-title-name">Tên</p>
+                                        <p class="list-title-point">Điểm uy tín</p>
+                                    </ul>
+                                    <ul class="list">
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-point">10</p>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-point">10</p>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-point">10</p>
+                                        </li>
+                                        <li class="item">
+                                            <p class="item-id">10</p>
+                                            <p class="item-name">Đào Xuân An</p>
+                                            <p class="item-point">10</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-7">
+                        <div class="statistic_book">
+                            <canvas id="myChart" width="400" height="190" dataNum="{{dataType.dataTypeNum}}"></canvas>
+                            <div class="statistic_book-wrap">
+                                <div class="book_litter book">
+                                    <h1 class="title">Sách có số lượng ít</h1>
+                                    <div class="wrap">
+                                        <ul class="list-title">
+                                            <p>Tên sách</p>
+                                            <p>Số lượng</p>
+                                            <p>Hành động</p>
+                                        </ul>
+                                        <ul class="list">
+                                            {{#each dataLitterBook}}
+                                            <li class="item">
+                                                <p class="name">{{this.Name}}</p>
+                                                <p class="number">{{this.Quantity}} quyển</p>
+                                                <button class="update" data={{this.IdBook}}>Cập nhật</button>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="book-many book">
+                                    <h1 class="title">Sách có số lượng nhiều</h1>
+                                    <div class="wrap">
+                                        <ul class="list-title">
+                                            <p>Tên sách</p>
+                                            <p>Số lượng</p>
+                                            <p>Hành động</p>
+                                        </ul>
+                                        <ul class="list">
+                                            {{#each dataLotsBook}}
+                                            <li class="item">
+                                                <p class="name">{{this.Name}}</p>
+                                                <p class="number">{{this.Quantity}} quyển</p>
+                                                <button class="update" data="{{this.IdBook}}">Cập nhật</button>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+             <script>
+                const canvar = document.getElementById('myChart');
+                const dataNum = canvar.getAttribute('dataNum');
+                const ctx = canvar.getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Giáo trình', 'Khoa học công nghệ - Kinh tế', 'Sách thiếu nhi', 'Tâm lý, tâm linh, tôn giáo', 'Truyện, tiểu thuyết', 'Văn hóa xã hội - Lịch sử', 'Văn học nghệ thuật'],
+                        datasets: [{
+                            label: 'Số lượng',
+                            data: dataNum.split(','),
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 206, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(153, 102, 255)',
+                                'rgb(255, 159, 64)',
+                                'rgb(123, 134, 43)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgb(123, 134, 43)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>

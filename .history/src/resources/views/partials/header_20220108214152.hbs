@@ -1,0 +1,105 @@
+<nav class="header navbar navbar-expand-lg navbar-dark bg-dark">
+    <section class="logo">
+        <a href="#" class="logo-link">
+            <img class="logo-img" src="/img/other/logo.png" alt="Logo" />
+        </a>
+    </section>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar trong admin manager -->
+        <ul class="navbar-nav mr-auto navbar-admin">
+            <li class="navbar-item nav-item" >
+                <a class="nav-link navbar-link" href="/admin/home">Trang chủ</a>
+            </li>
+            <li class="navbar-item nav-item" >
+                <a class="nav-link navbar-link" href="/admin/books">Quản lí sách</a>
+            </li>
+            <li class="navbar-item nav-item" >
+                <a class="nav-link navbar-link" href="/admin/authors">Quản lí tác giả</a>
+            </li>
+            <li class="navbar-item nav-item" >
+                <a class="nav-link navbar-link" href="/admin/users">Quản lí người dùng</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto navbar-client">
+            <li class="navbar-item nav-item" >
+                <a class="nav-link navbar-link" href="/">TRANG CHỦ</a>
+            </li>
+            <li class="navbar-item nav-item dropdown" >
+                <a class="navbar-link nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                SÁCH
+                </a>
+                <div class="dropdown-menu navbar-item-list" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item navbar-item-item" href="/books/khcn">Khoa học công nghệ - Kinh tế</a>
+                    <a class="dropdown-item navbar-item-item" href="/books/vhnt">Văn học nghệ thuật</a>
+                    <a class="dropdown-item navbar-item-item" href="/books/vhxh">Văn hóa xã hội - Lịch sử</a>
+                    <a class="dropdown-item navbar-item-item" href="/books/gt">Giáo trình</a>
+                    <a class="dropdown-item navbar-item-item" href="/books/tt">Truyện, tiểu thuyết</a>
+                    <a class="dropdown-item navbar-item-item" href="/books/tltg">Tâm lý, tâm linh, tôn giáo</a>
+                    <a class="dropdown-item navbar-item-item" href="/books/stn">Sách thiếu nhi</a>
+                </div>
+            </li>
+            <li class="navbar-item nav-item" >
+                <a class="nav-link navbar-link" href="/authors">TÁC GIẢ</a>
+            </li>
+        </ul>
+        
+        <div class="navbar-group">
+            <form class="form-inline my-2 my-lg-0 search-wrap" action="./search" method="POST">
+                <input class="search-input" type="search" placeholder="Search" aria-label="Search" onkeyup="Search()">
+                <button class="search-btn" type="submit">
+                    <img class="search-icon" src="/img/other/search.png" alt="">
+                </button>
+                <ul class="history_list">
+                </ul>
+            </form> 
+
+            <div class="navbar-user">
+                <div class="cart">
+                    {{#if context}}
+                    <section class="cart-btn">
+                        <a href="/myBookBorrow">
+                            <img class="store-icon" src="/img/other/bag-check.PNG">
+                        </a>
+                    </section>
+                    {{/if}}
+                </div>
+                <div class="user">
+                    <section class="not-login active">
+                        <a href="/login" class="">Đăng nhập</a>
+                    </section>
+                    {{#if context}}
+                    <section id = "user-login" data-id="{{context.IdUser}}" class="user-login">
+                        <img class="user-icon" src="/img/other/person.PNG">
+                        <p class="user-name">{{context.Username}}</p>
+                    </section>
+                    <ul class="user__list">
+                        <li class="user__item"><a
+                                href="/accout/{{context.IdUser}}"
+                                class="user__item-link"
+                            >Tài khoản của tôi</a></li>
+                        <li class="user__item user__back"><a
+                                href="http://localhost:3000/login"
+                                class="user__item-link"
+                            >Đăng xuất</a></li>
+                    </ul>
+                    {{/if}}
+
+                    <section class="user-login user-manager">
+                        <img class="user-icon" src="/img/other/person.PNG">
+                        <p class="user-name">Admin</p>
+                    </section>
+                    <ul class="user__list">
+                        <li class="user__item"><a
+                                href="/acc/1"
+                                class="user__item-link"
+                            >Tài khoản của tôi</a></li>
+                        <li class="user__item user__back"><a
+                                href="http://localhost:3000/login"
+                                class="user__item-link"
+                            >Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

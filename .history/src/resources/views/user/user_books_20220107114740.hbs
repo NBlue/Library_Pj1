@@ -1,0 +1,26 @@
+<div class="container-users">
+    <div class="book">
+        <div class="grid wide">
+            <div class="book__list">
+                <div class="row">
+                    {{#each data}}
+                    <div class="col l-2-4">
+                        <div class="book__item" style="display: none">
+                            <section class="book__item-display">
+                                <section class="book__item-display-img" style="background-image: url(/img/books/{{this.ImgBook}});"></section>
+                            </section>
+                            <div class="book__item-hover">
+                                <p class="book__item-hover-name">{{this.Name}}</p>
+                                <p class="book__item-hover-author">Số lượng: {{this.Quantity}} </p>
+                                <a href="/books/detail/{{this.IdBook}}" class="btn btn__detail">Xem chi tiết</a>
+                                <button data-id="{{this.IdBook}}" data-num="{{this.Quantity}}" class="btn btn__add-cart borrow" onclick="onBorrow2(this)">Mượn sách</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </div>
+</div>                        

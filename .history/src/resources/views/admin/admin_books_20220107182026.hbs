@@ -1,0 +1,128 @@
+<div class="container-admin">
+    <div class="admin-books active">
+        <div class="admin-control">
+            <a href="/admin/books/add" class="btn book__add-btn width-100">
+                Thêm sách
+                <i class="plus-icon fas fa-plus"></i>
+            </a>
+            {{!-- <a href=""class="btn chart-btn width-100">
+                Thống kê
+                <i class="chart-icon fas fa-chart-pie"></i>
+            </a> --}}
+        </div>
+        <div class="row">
+            <div class="col l-2">
+            </div>
+            <div class="col l-10">
+                <div class="book__label">
+                    <p class="id">STT</p>
+                    <p class="name">Tên sách</p>
+                    <p class="type">Thể loại</p>
+                    <p class="review">Giới thiệu</p>
+                    <p class="quantity">Số lượng</p>
+                    <p class="img">Ảnh</p>
+                    <p class="like">Lượt thích</p>
+                    <p class="action">Tùy chọn</p>
+                </div>
+                <div class="book__list">
+
+                    {{#each data}}
+                    <div class="book__item" style="display: none">
+                        <section class="book__item-id">
+                            <p class="id_text">{{sum @index 1}}</p>
+                        </section>
+                        <section class="book__item-name">
+                            <p class="name_text">{{this.Name}}</p>
+                        </section>
+                        <section class="book__item-type">
+                            <p class="type_text">{{this.TypeBook}}</p>
+                        </section>
+                        <section class="book__item-review">
+                            <p class="review_text">{{this.Review}}</p>
+                        </section>
+                        <section class="book__item-quantity">
+                            <p class="quantity_text">{{this.Quantity}}</p>
+                        </section>
+                        <section class="book__item-img">
+                            <section class="img" style="background-image: url(/img/books/{{this.ImgBook}});"></section>
+                        </section>
+                        <section class="book__item-like">
+                            <p class="like_text">{{this.LikeBook}}</p>
+                        </section>
+                        <section class="book__item-action">
+                            <a href="./books/update/{{this.IdBook}}"class="action_btn">
+                                <i class="action_update-icon fas fa-pen-square"></i>
+                            </a>
+                            <a class="action_btn" onclick="onDelete()">
+                                <i data-id="{{this.IdBook}}" onclick="getId(this)" class="action_delete-icon fas fa-trash-alt"></i>
+                            </a>
+                        </section>
+                    </div>                    
+                    {{/each}}
+                    
+                </div>
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- FORM DELETE --}}
+<form name="delete-book-form"  method="POST"></form>
+
+{{!-- Confirm Delete --}}
+<div class="confirm">
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h5>Xóa sách</h5>
+                    <button type="button" class="btn-close" onclick="onBack()">
+                        <img src="/img/other/remove_icon.png" alt="">                        
+                    </button>
+                </header>
+                <section class="modal-body">
+                    <p>Bạn chắc chắn muốn xóa sách này?</p>
+                </section>
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-primary modal-btn modal-confirm-btn">Xóa bỏ</button>
+                    <button type="button" class="btn btn-secondary  modal-btn" onclick="onBack()">Hủy</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var IdBook;
+    var confirm = document.querySelector('.confirm .modal');
+    console.log(confirm);
+    var deleteForm = document.forms['delete-book-form'];
+
+    function onDelete() {
+        if(!confirm.classList.contains("active")){
+            confirm.classList.add("active");
+        }
+    }
+
+    function onBack(){
+        if(confirm.classList.contains("active")){
+            confirm.classList.remove("active");
+        }
+    }
+    // ấn ngoài opacity -> thoát
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector('.modal-dialog').addEventListener("click", (e) => e.stopPropagation());
+        document.querySelector('.modal').addEventListener("click", onBack);
+    })
+    // Lấy ID cần xóa
+    function getId(value){
+        IdBook = value.getAttribute("data-id");
+        console.log(IdBook);
+    }
+
+    var deleteBookBtn = document.querySelector(".modal-confirm-btn");
+    deleteBookBtn.onclick = function(){
+        deleteForm.action = "./books/" +  IdBook +  "?_method=DELETE"
+        deleteForm.submit(); 
+    }
+</script>

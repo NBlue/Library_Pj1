@@ -313,7 +313,7 @@ class SiteController {
 
             // Kiểm tra nếu 0 điểm thì khóa tài khoản
             let newScore = await modelSite.getScoreUser(context.IdUser);
-            if (newScore[0].Score <= 0) {
+            if (newScore <= 0) {
                 let Lock = await modelSite.updateLockStatus(
                     context.IdUser,
                     dateNow

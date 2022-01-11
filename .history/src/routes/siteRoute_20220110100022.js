@@ -35,9 +35,9 @@ router.get("/", siteController.getHome);
 router.post(
     "/login",
     [
-        check("username", "Yêu cầu nhập tên >= 3 kí tự")
+        check("username", "Yêu cầu nhập tên >= 8 kí tự")
             .exists()
-            .isLength({ min: 3 }),
+            .isLength({ min: 8 }),
         check("username", "Không được để trống!").notEmpty(),
         check("password", "Yêu cầu nhập tên > 6 kí tự")
             .exists()

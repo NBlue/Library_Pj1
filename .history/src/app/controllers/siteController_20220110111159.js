@@ -69,24 +69,22 @@ class SiteController {
                             req.session.context = data;
                             res.redirect("/");
                         } else if (data != null && data.LockStatus !== null) {
+                            console.log(data.LockStatus);
                             let today = new Date();
                             let dateNow = today.toISOString().substr(0, 10);
+                            console.log(dateNow);
                             let limit =
                                 (new Date(dateNow) -
                                     new Date(data.LockStatus)) /
                                 (1000 * 60 * 60 * 24);
-                            var alert = {};
-                            if (limit > 15) {
-                                alert.Title = "Khóa tài khoản";
-                                alert.Content =
-                                    "Tài khoản tạm thời bị khóa. Bạn có thể liên hệ với quản lí để mở khóa!";
-                            } else {
-                                alert.Title = "Khóa tài khoản";
-                                alert.Content =
-                                    "Tài khoản tạm thời bị khóa trong ít nhất " +
+                            console.log(limit);
+                            var alert = {
+                                Title: "Khóa tài khoản",
+                                Content:
+                                    "Tài khoản tạm thời bị khóa sau ít nhất " +
                                     (15 - limit) +
-                                    " ngày nữa!";
-                            }
+                                    " ngày nữa",
+                            };
                             res.render("site/login", { body, alert });
                         } else {
                             var alert = {
@@ -301,6 +299,7 @@ class SiteController {
                     context.IdUser,
                     Score[0].Score
                 );
+                console.log(updateScore);
             }
             var data = await modelSite.returnBook(id[0], dateNow);
 
@@ -310,23 +309,8 @@ class SiteController {
                 id[0],
                 dataBook.Quantity + 1
             );
-
-            // Kiểm tra nếu 0 điểm thì khóa tài khoản
-            let newScore = await modelSite.getScoreUser(context.IdUser);
-            if (newScore[0].Score <= 0) {
-                let Lock = await modelSite.updateLockStatus(
-                    context.IdUser,
-                    dateNow
-                );
-                var alert = {
-                    Title: "Khóa tài khoản",
-                    Content:
-                        "Tài khoản của bạn tạm thời bị khóa vì điểm uy tín <= 0",
-                };
-                res.render("site/login", { alert });
-            } else {
-                res.redirect("back");
-            }
+            console.log({ "dataBook:": dataBook });
+            res.redirect("back");
         }
         returnBookActual();
     }

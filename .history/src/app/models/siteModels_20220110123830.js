@@ -234,21 +234,4 @@ module.exports = function () {
             console.log(err);
         }
     };
-
-    // Khóa tài khoản
-    this.updateLockStatus = async function (IdUser, dateNow) {
-        try {
-            let pool = await conn;
-            let data = await pool
-                .request()
-                .input("IdUser", sql.Int, IdUser)
-                .input("LockStatus", sql.VarChar, dateNow)
-                .query(
-                    "UPDATE Users SET LockStatus = @LockStatus WHERE IdUser = @IdUser"
-                );
-            return data.recordset;
-        } catch (err) {
-            console.log(err);
-        }
-    };
 };

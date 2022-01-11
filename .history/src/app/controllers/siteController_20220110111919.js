@@ -301,6 +301,7 @@ class SiteController {
                     context.IdUser,
                     Score[0].Score
                 );
+                console.log(updateScore);
             }
             var data = await modelSite.returnBook(id[0], dateNow);
 
@@ -310,23 +311,8 @@ class SiteController {
                 id[0],
                 dataBook.Quantity + 1
             );
-
-            // Kiểm tra nếu 0 điểm thì khóa tài khoản
-            let newScore = await modelSite.getScoreUser(context.IdUser);
-            if (newScore[0].Score <= 0) {
-                let Lock = await modelSite.updateLockStatus(
-                    context.IdUser,
-                    dateNow
-                );
-                var alert = {
-                    Title: "Khóa tài khoản",
-                    Content:
-                        "Tài khoản của bạn tạm thời bị khóa vì điểm uy tín <= 0",
-                };
-                res.render("site/login", { alert });
-            } else {
-                res.redirect("back");
-            }
+            console.log({ "dataBook:": dataBook });
+            res.redirect("back");
         }
         returnBookActual();
     }

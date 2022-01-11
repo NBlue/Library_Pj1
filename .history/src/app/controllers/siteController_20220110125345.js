@@ -301,6 +301,7 @@ class SiteController {
                     context.IdUser,
                     Score[0].Score
                 );
+                console.log(updateScore);
             }
             var data = await modelSite.returnBook(id[0], dateNow);
 
@@ -313,7 +314,7 @@ class SiteController {
 
             // Kiểm tra nếu 0 điểm thì khóa tài khoản
             let newScore = await modelSite.getScoreUser(context.IdUser);
-            if (newScore[0].Score <= 0) {
+            if (newScore <= 0) {
                 let Lock = await modelSite.updateLockStatus(
                     context.IdUser,
                     dateNow

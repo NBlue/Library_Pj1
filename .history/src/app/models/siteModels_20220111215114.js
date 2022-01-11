@@ -168,7 +168,7 @@ module.exports = function () {
                 .query(
                     "SELECT * FROM Borrow WHERE IdBook = @IdBook And ReturnDateActual IS NULL"
                 );
-            return data.recordset[0];
+            return data.recordset;
         } catch (err) {
             console.log(err);
         }

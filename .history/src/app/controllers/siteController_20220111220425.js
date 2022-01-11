@@ -234,7 +234,6 @@ class SiteController {
             var thisBookBorrowing = await modelSite.findBookBorrow(
                 req.params.id
             );
-            var data = await modelBooks.findBookById(req.params.id);
 
             if (nowScore[0].Score <= 0) {
                 var alert = {
@@ -242,31 +241,21 @@ class SiteController {
                     Content:
                         "Điểm uy tín của bạn không cho phép mượn sách. Cảnh báo: Tài khoản của bạn có nguy cơ bị khóa với số điểm hiện tại!. Mau chóng liên hệ quản lí thư viện để khôi phục!",
                 };
-                res.render("user/user_cart_books", { context, data, alert });
+                res.render("user/user_cart_books", { alert });
             } else if (thisBookBorrowing !== undefined) {
                 var alert = {
                     Title: "Không mượn được sách",
                     Content: "Bạn đang mượn quyển sách này trong hệ thống!",
                 };
-                res.render("user/user_cart_books", { context, data, alert });
+                res.render("user/user_cart_books", { alert });
             } else {
-                var alert = {
-                    Title: "Mượn sách thành công",
-                    Content:
-                        "Bạn có thể kiểm tra sách đã được mượn trong mục sách mượn!",
-                };
-                modelSite.borrowNewBook(dataBorrow, async (err, dataNew) => {
+                modelSite.borrowNewBook(dataBorrow, async (err, data) => {
                     var dataBook = await modelBooks.findBookById(req.params.id);
                     var update = await modelBooks.updateQuantity(
                         req.params.id,
                         dataBook.Quantity - 1
                     );
-                    res.render("user/user_cart_books", {
-                        context,
-                        data,
-                        alert,
-                    });
-                    //res.redirect("back");
+                    res.redirect("back");
                 });
             }
         }

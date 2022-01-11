@@ -42,7 +42,7 @@
                                             <p class="item-name">{{this.Name}}</p>
                                             <p class="item-point">{{this.Score}}</p>
                                             <section class="item-wrap">
-                                                <button class="item-action update-point" data-id="{{this.IdUser}}">Cập nhật điểm</button>
+                                                <button class="item-action update-point" data-id="{{this.Score}}">Cập nhật điểm</button>
                                                 <button class="item-action lock-action" data-id="{{this.IdUser}}">Tạm khóa</button>
                                             </section>
                                         </li>
@@ -173,14 +173,14 @@
                         let IdUser = e.querySelector(".update-point").getAttribute("data-id");
                         console.log(IdUser);
                         console.log("click");
-                        openLockForm.action = "./users/updateCore/" + IdUser + "?_method=PUT";
+                        openLockForm.action = "./users/updatePoint" + IdUser + "?_method=PUT";
                         openLockForm.submit();
                     }
                      e.querySelector(".lock-action").onclick = () => {
                         let IdUser = e.querySelector(".update-point").getAttribute("data-id");
                         console.log(IdUser);
                         console.log("click");
-                        openLockForm.action = "./users/block/" + IdUser + "?_method=PUT";
+                        openLockForm.action = "./users/updatePoint" + IdUser + "?_method=PUT";
                         openLockForm.submit();
                     }
                 }

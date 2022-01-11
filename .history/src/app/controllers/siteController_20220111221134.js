@@ -255,7 +255,7 @@ class SiteController {
                     Content:
                         "Bạn có thể kiểm tra sách đã được mượn trong mục sách mượn!",
                 };
-                modelSite.borrowNewBook(dataBorrow, async (err, dataNew) => {
+                modelSite.borrowNewBook(dataBorrow, async (err, data) => {
                     var dataBook = await modelBooks.findBookById(req.params.id);
                     var update = await modelBooks.updateQuantity(
                         req.params.id,

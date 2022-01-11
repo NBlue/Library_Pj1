@@ -49,12 +49,10 @@ class HomeStatisticController {
             var today = new Date();
             var dateNow = today.toISOString().substr(0, 10);
             let dataUser = await modelUsers.getInfoById(req.params.id);
-            console.log(dataUser);
-            console.log(dateNow);
             let Lock = await modelSite.updateLockStatus(
                 req.params.id,
                 dateNow,
-                dataUser[0].LockNumber
+                dataUser.Score
             );
             res.redirect("/admin/home");
         }

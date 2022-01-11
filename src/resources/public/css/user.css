@@ -1270,9 +1270,6 @@
     background-color: #fff;
 }
 
-.lock .list {
-}
-
 .statistic_book-wrap .list {
     height: 140px;
 }
@@ -1355,11 +1352,27 @@
     cursor: pointer;
 }
 
-.list-title-point {
+.statistic_users .item-wrap {
 }
-.item-point {
+.statistic_users .item-action {
+    outline: none;
+    border: 0px;
+    color: #fff;
+    padding: 4px;
+    border-radius: 3px;
+    cursor: pointer;
 }
-.statistic_author {
+
+.statistic_users .item-action:hover {
+    opacity: 0.8;
+}
+
+.statistic_users .update-point {
+    background-color: var(--green);
+}
+.statistic_users .lock-action {
+    background-color: var(--danger);
+    margin-right: 4px;
 }
 
 .statistic_book {

@@ -38,37 +38,15 @@ class HomeStatisticController {
 
     // Khóa tài khoản
     LockAccout(req, res) {
-        modelUsers.getInfoById(async (err, data) => {
-            let Lock = await modelSite.updateLockStatus(
-                req.params.id,
-                dateNow,
-                data.LockNumber
-            );
-        });
-        async function lockAcc() {
-            var today = new Date();
-            var dateNow = today.toISOString().substr(0, 10);
-            let dataUser = await modelUsers.getInfoById(req.params.id);
-            console.log(dataUser);
-            console.log(dateNow);
-            let Lock = await modelSite.updateLockStatus(
-                req.params.id,
-                dateNow,
-                dataUser[0].LockNumber
-            );
-            res.redirect("/admin/home");
-        }
-        lockAcc();
+        // modelUsers.getInfoById(async (err, data) => {
+        //     let Lock = await modelSite.updateLockStatus(req.params.id, dateNow, data.LockNumber);
+        // });
+        res.send("Khoát tài khoản thành công!");
     }
 
     // Cập nhật lại điểm cho người dùng sắp bị khóa nếu người dùng đến thư viện trả sách cho quản lí
     updateScore(req, res) {
-        async function updateScore100() {
-            //110 vì bên controler trừ đi là còn 100
-            let update100 = await modelSite.updateScoreUser(req.params.id, 110);
-            res.redirect("/admin/home");
-        }
-        updateScore100();
+        res.send("Cập nhật điểm thành công");
     }
 
     // Mở khóa tài khoản

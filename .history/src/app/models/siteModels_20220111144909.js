@@ -158,22 +158,6 @@ module.exports = function () {
             });
     };
 
-    // Tìm sách mượn: sách đang định mượn có trong hệ thống chưa?
-    this.findBookBorrow = async function (IdBook) {
-        try {
-            let pool = await conn;
-            let data = await pool
-                .request()
-                .input("IdBook", sql.Int, IdBook)
-                .query(
-                    "SELECT * FROM Borrow WHERE IdBook = @IdBook And ReturnDateActual IS NULL"
-                );
-            return data.recordset[0];
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
     // Get book borrowing
     this.getBookBorrowing = async function (IdUser) {
         try {
@@ -261,7 +245,7 @@ module.exports = function () {
                 .input("LockNumber", sql.Int, LockNumber + 1)
                 .input("LockStatus", sql.VarChar, dateNow)
                 .query(
-                    "UPDATE Users SET LockStatus = @LockStatus, LockNumber = @LockNumber, Score = 0 WHERE IdUser = @IdUser"
+                    "UPDATE Users SET LockStatus = @LockStatus, LockNumber = @LockNumber WHERE IdUser = @IdUser"
                 );
             return data.recordset;
         } catch (err) {

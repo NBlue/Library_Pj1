@@ -54,7 +54,7 @@ class HomeStatisticController {
             let Lock = await modelSite.updateLockStatus(
                 req.params.id,
                 dateNow,
-                dataUser[0].LockNumber
+                dataUser.LockNumber
             );
             res.redirect("/admin/home");
         }

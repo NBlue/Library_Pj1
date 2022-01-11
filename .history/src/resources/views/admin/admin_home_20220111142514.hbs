@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="waring-lock">
-                                <h1 class="title">Người dùng có điểm ở mức thấp</h1>
+                                <h1 class="title">Người dùng có điểm có nguy cơ bị khóa</h1>
                                 <div class="wrap">
                                     <ul class="list-title">
                                         <p class="list-title-id">Id</p>
@@ -42,8 +42,8 @@
                                             <p class="item-name">{{this.Name}}</p>
                                             <p class="item-point">{{this.Score}}</p>
                                             <section class="item-wrap">
-                                                <button class="item-action update-point" data-id="{{this.IdUser}}">Cập nhật điểm</button>
-                                                <button class="item-action lock-action" data-id="{{this.IdUser}}">Tạm khóa</button>
+                                                <button class="item-action update-point">Cập nhật điểm</button>
+                                                <button class="item-action lock-action">Tạm khóa</button>
                                             </section>
                                         </li>
                                         {{/each}}
@@ -145,17 +145,17 @@
 
                  // Ngày mở khóa
                 const items = document.querySelectorAll('.lock .item');
-                var today = new Date();
-                var dateNow = today.toISOString().substr(0, 10);
-                console.log(dateNow);
-                var openLockForm = document.forms['open-block'];
                 for(let e of items){
                     let dateLock = e.getAttribute("date-lock");
+                    let today = new Date();
+                    let dateNow = today.toISOString().substr(0, 10);
+                    console.log(dateNow);
                     let limit = (new Date(dateNow) - new Date(dateLock)) / (1000 * 60 * 60 * 24);
                     if(limit >= 15){
                         e.querySelector(".item-status").textContent = "Có thể mở khóa"
+                        var openLockForm = document.forms['open-block'];
                         e.querySelector(".item-button").onclick = function(){
-                            let IdUser = e.querySelector(".item-button").getAttribute("data-id");
+                            var IdUser = e.querySelector(".item-button").getAttribute("data-id");
                             openLockForm.action = "./users/" + IdUser + "?_method=PUT";
                             openLockForm.submit();
                         }
@@ -163,25 +163,6 @@
                         e.querySelector(".item-status").textContent = "Có thể mở sau " + (15 - limit) + " ngày";
                         e.querySelector(".item-status").classList.add("warning");
                         e.querySelector(".item-button").classList.add("block");
-                    }
-                }
-
-                // Khóa và cập nhật điểm:
-                const itemsWarn = document.querySelectorAll(".waring-lock .item");
-                for(let e of itemsWarn) {
-                    e.querySelector(".update-point").onclick = () => {
-                        let IdUser = e.querySelector(".update-point").getAttribute("data-id");
-                        console.log(IdUser);
-                        console.log("click");
-                        openLockForm.action = "./users/updateCore/" + IdUser + "?_method=PUT";
-                        openLockForm.submit();
-                    }
-                     e.querySelector(".lock-action").onclick = () => {
-                        let IdUser = e.querySelector(".update-point").getAttribute("data-id");
-                        console.log(IdUser);
-                        console.log("click");
-                        openLockForm.action = "./users/block/" + IdUser + "?_method=PUT";
-                        openLockForm.submit();
                     }
                 }
             </script>

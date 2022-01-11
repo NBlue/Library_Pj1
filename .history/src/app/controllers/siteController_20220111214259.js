@@ -230,47 +230,26 @@ class SiteController {
         dataBorrow.IdBook = req.params.id;
 
         async function borrow() {
-            var nowScore = await modelSite.getScoreUser(context.IdUser);
             var thisBookBorrowing = await modelSite.findBookBorrow(
-                req.params.id
+                req.param.id
             );
-            var data = await modelBooks.findBookById(req.params.id);
 
-            if (nowScore[0].Score <= 0) {
-                var alert = {
-                    Title: "Không mượn được sách",
-                    Content:
-                        "Điểm uy tín của bạn không cho phép mượn sách. Cảnh báo: Tài khoản của bạn có nguy cơ bị khóa với số điểm hiện tại!. Mau chóng liên hệ quản lí thư viện để khôi phục!",
-                };
-                res.render("user/user_cart_books", { context, data, alert });
-            } else if (thisBookBorrowing !== undefined) {
-                var alert = {
-                    Title: "Không mượn được sách",
-                    Content: "Bạn đang mượn quyển sách này trong hệ thống!",
-                };
-                res.render("user/user_cart_books", { context, data, alert });
-            } else {
-                var alert = {
-                    Title: "Mượn sách thành công",
-                    Content:
-                        "Bạn có thể kiểm tra sách đã được mượn trong mục sách mượn!",
-                };
-                modelSite.borrowNewBook(dataBorrow, async (err, dataNew) => {
-                    var dataBook = await modelBooks.findBookById(req.params.id);
-                    var update = await modelBooks.updateQuantity(
-                        req.params.id,
-                        dataBook.Quantity - 1
-                    );
-                    res.render("user/user_cart_books", {
-                        context,
-                        data,
-                        alert,
-                    });
-                    //res.redirect("back");
-                });
-            }
+            var nowScore = await modelSite.getScoreUser(context.IdUser);
+
+            console.log(thisBookBorrowing);
+            console.log(nowScore);
+            res.redirect("back");
         }
         borrow();
+
+        // modelSite.borrowNewBook(dataBorrow, async (err, data) => {
+        //     var dataBook = await modelBooks.findBookById(req.params.id);
+        //     var update = await modelBooks.updateQuantity(
+        //         req.params.id,
+        //         dataBook.Quantity - 1
+        //     );
+        //     res.redirect("back");
+        // });
     }
 
     // GET my book borow

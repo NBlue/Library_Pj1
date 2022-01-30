@@ -416,7 +416,8 @@
             } else {
                 // Không cho mượn sách khi số lượng còn 0 quyển, 0 điểm uy tín, đang mượn rồi
                 let score = document.querySelector(".navbar-user #user-login").getAttribute("score");
-                let IdBorrows = document.querySelector(".navbar-user #user-login").getAttribute("id-borrow");
+                let IdBorrows = document.querySelector(".navbar-user #user-login").getAtribute("id-borrow");
+                console.log(IdBorrows)
 
                 function onBorrow(e){
                     let number = e.closest(".book-info").querySelector(".book-info-quantity span");
@@ -429,18 +430,12 @@
                         titleModal.textContent = "Không mượn được sách";
                         contentModal.textContent = "Điểm uy tín của bạn không cho phép mượn sách. Cảnh báo: Tài khoản của bạn có nguy cơ bị khóa với số điểm hiện tại!. Mau chóng liên hệ quản lí thư viện để khôi phục!"
                         notiLogin.classList.add("active");
-                    }else if(IdBorrows.includes(e.getAttribute("data-id"))){
-                        titleModal.textContent = "Không mượn được sách";
-                        contentModal.textContent = "Bạn đang mượn quyển sách này rồi!";
-                        notiLogin.classList.add("active");
                     }else {
                         location.assign("http://localhost:3000/books/borrowing/" + e.getAttribute("data-id"));
                     }
                 }
                 function onBorrow2(e){
                     let number = e.getAttribute("data-num");
-                    let IdBorrows = document.querySelector(".navbar-user #user-login").getAttribute("id-borrow");
-
                     if(number=== "0"){
                         titleModal.textContent = "Hết sách";
                         contentModal.textContent = "Tạm thời hết sách trên hệ thống!"
@@ -448,10 +443,6 @@
                     }else if(score === "0"){
                         titleModal.textContent = "Không mượn được sách";
                         contentModal.textContent = "Điểm uy tín của bạn không cho phép mượn sách. Cảnh báo: Tài khoản của bạn có nguy cơ bị khóa với số điểm hiện tại!. Mau chóng liên hệ quản lí thư viện để khôi phục!"
-                        notiLogin.classList.add("active");
-                    }else if(IdBorrows.includes(e.getAttribute("data-id"))){
-                        titleModal.textContent = "Không mượn được sách";
-                        contentModal.textContent = "Bạn đang mượn quyển sách này rồi!";
                         notiLogin.classList.add("active");
                     } else {
                         location.assign("http://localhost:3000/books/borrowing/" + e.getAttribute("data-id"));

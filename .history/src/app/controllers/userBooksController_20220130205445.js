@@ -9,8 +9,7 @@ class BooksController {
     getBookKhcn(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook(
                 "Khoa học công nghệ - Kinh tế",
                 (err, data) => {
@@ -23,8 +22,7 @@ class BooksController {
     getBookVhnt(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook("Văn học nghệ thuật", (err, data) => {
                 res.render("user/user_books", { context, data, IdBorrow });
             });
@@ -34,8 +32,7 @@ class BooksController {
     getBookVhxh(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook(
                 "Văn hóa xã hội - Lịch sử",
                 (err, data) => {
@@ -48,8 +45,7 @@ class BooksController {
     getBookGt(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook("Giáo trình", (err, data) => {
                 res.render("user/user_books", { context, data, IdBorrow });
             });
@@ -59,8 +55,7 @@ class BooksController {
     getBookTt(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook(
                 "Truyện, tiểu thuyết",
                 (err, data) => {
@@ -73,8 +68,7 @@ class BooksController {
     getBookTltg(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook(
                 "Tâm lý, tâm linh, tôn giáo",
                 (err, data) => {
@@ -87,8 +81,7 @@ class BooksController {
     getBookStn(req, res) {
         async function Book() {
             var context = req.session.context;
-            let IdBorrow;
-            if (context !== undefined) IdBorrow = await getIdBorrow(context);
+            let IdBorrow = await getIdBorrow(context);
             modelBooks.findBookByTypeBook("Sách thiếu nhi", (err, data) => {
                 res.render("user/user_books", { context, data, IdBorrow });
             });

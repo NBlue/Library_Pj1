@@ -26,21 +26,6 @@ class SiteController {
                 "WHERE TypeBook = N'Sách thiếu nhi'"
             );
             let BookAll = await modelBooks.getTopBook("5", "");
-            let BorrowingBook;
-            let IdString = "";
-            if (context !== undefined) {
-                BorrowingBook = await modelSite.getBookBorrowing(
-                    context.IdUser
-                );
-                for (let e of BorrowingBook) {
-                    console.log(e);
-                    IdString += e.IdBook + ",";
-                }
-            }
-            console.log(context);
-            let IdBorrow = {
-                IdString: IdString,
-            };
 
             res.render("user/user_home", {
                 context,
@@ -50,7 +35,6 @@ class SiteController {
                 BookTr,
                 BookStn,
                 BookAll,
-                IdBorrow,
             });
         });
     }
